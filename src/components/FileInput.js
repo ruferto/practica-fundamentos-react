@@ -11,10 +11,8 @@ const FileInput = ({ value, onChange = noop, ...rest }) => (
       Click to select some files...
       <input
         {...rest}
-        // style={{ display: "none" }}
         type="file"
         onChange={e => {
-            console.log('eaaaaaaaa'+e.target.files)
           onChange([...e.target.files]);
         }}
       />
