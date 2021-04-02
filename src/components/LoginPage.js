@@ -1,5 +1,4 @@
 import React from 'react';
-// import { Redirect } from 'react-router-dom';
 import { login } from '../api/auth.js';
 import { AuthContextConsumer } from './auth/context'
 
@@ -10,38 +9,46 @@ const Login = (authValue) => {
         email: '',
         password: '',
         validEmail: false,
-        validPassword: false
+        validPassword: false,
+        wantsToBeRemembered: false
     });
     const {email, password, validEmail} = credentials;
     
 
     const handleChange = (event) => {
-        setCredentials(oldValue => ({
-            ...oldValue,
-            [event.target.name]: event.target.value,
-          }));
-        if(event.target.name === 'email'){
+        
+        switch (event.target.name) {
+          
+          case 'wantsToBeRemembered':
             setCredentials(oldValue => ({
-                ...oldValue,
-                validEmail: event.target.value.indexOf('@') !== -1
+              ...oldValue,
+              wantsToBeRemembered: event.target.checked,
             }));
+            break;
+
+            case 'email':
+            setCredentials(oldValue => ({
+              ...oldValue,
+              validEmail: event.target.value.indexOf('@') !== -1
+            }));
+          // eslint-disable-next-line no-fallthrough
+          default:
+            setCredentials(oldValue => ({
+              ...oldValue,
+              [event.target.name]: event.target.value,
+            }));
+            break;
         }
     }
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         try{
-            onLogin();
-            await login({
-                email: credentials.email,
-                password: credentials.password
-            }).then(onLogin);
+            await login(credentials).then(onLogin);
         }catch(error){
             console.log(error);
         }
     }
-
-    //if(isLogged) return <Redirect to="/" />
     
     return <div className="login-container">
     <form className="form-login" method="GET" onSubmit={handleSubmit}>
@@ -49,11 +56,10 @@ const Login = (authValue) => {
         <input className="form-login-password"name="password" id="password" type="password" placeholder="Contraseña" onChange={handleChange} />
         <button className="login-button" disabled={!email || !password || !validEmail} >Login</button>
         <div style={{display: 'flex', flexDirection: 'row-reverse'}}>
-            <input type='checkbox' id='remember' name='remember' />&nbsp;
-            <label style={{fontSize: 12}}for='remember'>Remember me</label>
+            <input type='checkbox' id='wantsToBeRemembered' name='wantsToBeRemembered' defaultChecked={credentials.wantsToBeRemembered} onClick={handleChange}/>&nbsp;
+            <label style={{fontSize: 12}}for='wantsToBeRemembered' >Remember me</label>
         </div>
     </form>
-    {/* <Link to="/">Don't have an account? Register</Link> */}
 </div>
 
 }

@@ -2,9 +2,15 @@ import client, { configureClient, resetClient } from './client';
 import storage from '../utils/storage';
 
 export const login = credentials => {
-  return client.post('/api/auth/login', credentials).then(({ accessToken }) => {
+  const {email, password, wantsToBeRemembered} = credentials;
+  const creds = {
+    email,
+    password
+  }
+  return client.post('/api/auth/login', creds).then(({ accessToken }) => {
     configureClient( {accessToken} );
-    storage.set('auth', accessToken);
+    if(wantsToBeRemembered)
+      storage.set('auth', accessToken);
   });
 };
 
