@@ -1,25 +1,8 @@
-//import 'rc-tooltip/assets/bootstrap.css';
 import React from 'react';
-import Slider/*, { SliderTooltip }*/ from 'rc-slider';
+import Slider from 'rc-slider';
 
 const { createSliderWithTooltip } = Slider;
 const Range = createSliderWithTooltip(Slider.Range);
-//const { Handle } = Slider;
-
-// const handle = props => {
-//   const { value, dragging, index, ...restProps } = props;
-//   return (
-//     <SliderTooltip
-//       prefixCls="rc-slider-tooltip"
-//       overlay={`${value} %`}
-//       visible={dragging}
-//       placement="top"
-//       key={index}
-//     >
-//       <Handle value={value} {...restProps} />
-//     </SliderTooltip>
-//   );
-// };
 
 const wrapperStyle = { width: 600, margin: 10 };
 

@@ -1,5 +1,4 @@
 import React from 'react';
-// import dataservice from '../Dataservice.js';
 import Tags from './Tags.js';
 import QueryForm from './QueryForm.js';
 import { Link } from 'react-router-dom';
@@ -31,10 +30,7 @@ const AdsList = ({ queries, setQueries }) => {
   const [ads, setAds] = React.useState([]);
   
   React.useEffect(() => {
-    // setTimeout( ()=>{
-      getLatestAdverts().then(setAds);
-    // },200);
-    
+      getLatestAdverts().then(setAds);    
   }, []);
   
 
@@ -48,15 +44,11 @@ const AdsList = ({ queries, setQueries }) => {
 
   const adsElement = filtered.map( ad => {
     
-    // const adImage = <img className="img-ad" src={ ad.foto} width="180" alt={ad.nombre} />;
     return <li className="ad-container" key={ad.id}>
       <Link to={{pathname: `/advert/${ad.id}`, queries:{queries}}} >
         <div>
         { (ad.sale) ? 'Se vende' : 'Se compra' }:
         <div className="ad-name"><b>{ ad.name }</b></div>
-        {/* <div className="img-container">
-          {adImage}
-        </div> */}
         <div className="price">{ ad.price % 1 !== 0 ? Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(ad.price) : Intl.NumberFormat('de-DE').format(ad.price)+' €' }</div>
         <div className="tags">Etiquetas: &nbsp;<Tags tagsArray={ad.tags}/></div>
         </div>

@@ -29,8 +29,6 @@ const AdDetail = ({adId, queries}) => {
         
     }, [adId.params.id]);
 
-    // if(error) alert(error)
-
     if(deletedAd){
         return <Redirect to="/" />
     }
@@ -42,11 +40,10 @@ const AdDetail = ({adId, queries}) => {
                     </Link>
                     <button className='delete-button' onClick={handleDelete}>Borrar</button>
                 </div>
-                {/* <div><Link to={{pathname:'/', queries: queries}}>Volver</Link></div> */}
                 <div style={{padding:10}}>{ad.name}</div>
                 <div>{ad.sale ? 'For sale' : 'Someone buys'}</div>
                 <div>Price: {ad.price}</div>
-                <img src={ad.photo ? `http://localhost:3001${ad.photo}` : '../../images/back.png'} alt={ad.name} />
+                <img src={ad.photo ? `${process.env.REACT_APP_API_BASE_URL}${ad.photo}` : '../../images/back.png'} alt={ad.name} />
             </div>
 }
 

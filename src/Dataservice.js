@@ -148,10 +148,10 @@ export default {
         } else {
             config.body = postData;
         }
-        // const token = await this.getToken();
-        // if (token) {
-            config.headers['Authorization'] = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhYWIyZmZkYi01Njg4LTRiMTctYTc4OS05MGMwNTg3MmI1NGUiLCJpYXQiOjE2MTY1NDI5MDYsImV4cCI6MTYxNjYyOTMwNn0.aGu9I_O5R7wVlDNhNUHUMOC0YHl0uLsHQvlx1bscrD4`;//${token}`;
-        // }
+        const token = await this.getToken();
+        if (token) {
+            config.headers['Authorization'] = `Bearer ${token}`;
+        }
         const response = await fetch(url, config);
         const data = await response.json();
         if (response.ok) {

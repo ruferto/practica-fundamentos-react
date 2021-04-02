@@ -1,6 +1,5 @@
 import React from 'react';
 import { Redirect } from 'react-router';
-// import dataService from '../Dataservice.js';
 import SelectTag from './SelectTag.js';
 import { saveAd } from '../api/adverts'
 
@@ -18,7 +17,6 @@ const NewAd = () => {
     const handleSubmit = async(event) => {
         event.preventDefault();
         try{
-            //await saveAdvert(formValues, setCreated);
             setCreated(await saveAd(formValues))
         }catch(e){
             console.log(e);
@@ -69,10 +67,6 @@ const NewAd = () => {
             <div>
                 <label for="precio">Precio</label><br />
                 <input type="number" step="0.01" min="0" name="price" id="price" className="ad-price" placeholder="0,00" onChange={handleChange} />
-                {/* <select className="ad-sale select-css" name="sale" id="sale" onChange={handleChange} >
-                    <option value={true} selected>Vender</option>
-                    <option value={false}>Comprar</option>
-                </select> */}
                 <div>
                     <div><input id='sale' name='sale' type='radio' value={true} onChange={handleChange} defaultChecked /><label>Sale</label></div>
                     <div><input id='sale' name='sale' type='radio' value={false} onChange={handleChange}/><label>Buy</label></div>
@@ -81,14 +75,12 @@ const NewAd = () => {
 
             <div>
                 <label for="tags">Tags</label><br />
-                {/* <input type="text" className="ad-tags" name="tags" id="tags" placeholder="Separados por comas" onChange={handleChange} /> */}
             </div>
             <SelectTag handleChange={handleChange} />
             <div>
                 <label for="photo">Imagen</label><br />
                 <input ref={fileRef} type="file" className="ad-photo" name="photo" id="photo" accept="image/*" onChange={handleChange} />
             </div>
-            {/* <FileInput value='' onChange={handleChange} /> */}
             <button type="submit" className="buttonAdd" >Publicar</button>
         
         </form>

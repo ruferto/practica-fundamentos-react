@@ -12,7 +12,6 @@ const TitleApp = ({titleApp, isLogged, onLogout}) => {
     return <div className='title-container'>
     <h1><div className='title' ><Link to='/'>{titleApp}</Link></div></h1>
     <div className='subtitle-container'>
-      {/* <div className="subtitle"><Link to="/login">Login</Link></div> */}
       {isLogged ? <><button style={{marginBottom:30, fontSize:15}} onClick={handleLogout}>Logout</button> 
       <div><Link to='/advert/new'><button id='myBtn' className='buttonAdd' ><b>+</b> New Advert</button></ Link></div></>
       : ''}
