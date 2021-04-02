@@ -1,0 +1,359 @@
+@import "https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css";
+
+@font-face {
+    font-family: SanchezFont;
+    src: url('./assets/fonts/Sanchezregular.otf');
+}
+
+html {
+    box-sizing: border-box;
+    background-color: rgb(243, 242, 242);
+}
+   
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+  
+body {
+    
+    margin: 0;
+    padding: 0;
+    font: 14px  Verdana, "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+  
+a {
+    /* color: #88aab6; */
+    /* color:#26c0ac; */
+    text-decoration: none;
+    padding-right: .5rem;
+    color: inherit;
+}
+  
+a:hover{
+    /* color: #30ebeb; */
+}
+  
+a:visited{
+    /* color: #1c8d7e; */
+}
+.img-ad{
+    width:180px;
+    height: 180px;
+    object-fit:contain;
+    
+}
+
+.img-container{
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    height: 180px;
+    width: 180px;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/*Titles*/
+.title{
+    font-family: SanchezFont, Verdana, 'Geneva';
+    font-size: 4rem;
+    color:#26c0ac;
+  }
+  
+.title-container{
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    padding: 20px;
+    
+    margin-bottom: 10px;
+    border-bottom: 3px;
+    border-color: #26c0ac;
+    border-style: hidden hidden solid hidden;
+}
+  
+.subtitle-container{
+    display: flex;
+    flex-direction: column;
+}
+  
+.subtitle{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 1rem;
+    color: #109c8a;
+    /* padding-top: 40px; */
+    text-align: right;
+}
+
+/* Ads */
+.ads-list{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding: 5px;
+}
+  
+.ad-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    /* justify-content: center; */
+    text-align: center;
+    background-color: white;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    margin-left: .5rem;
+    margin-right: .5rem;
+    padding: 1rem;
+    width: 200px;
+    height: 200px;
+}
+  
+.ad-container:hover{
+    /* transform: translate(0px, -10px); */
+    -webkit-box-shadow: 0px 7px 21px 5px rgba(0, 0, 0, .2);
+    box-shadow: 0px 7px 21px 5px rgba(0, 0, 0, .2);;
+      /* border-radius: 0px 0px 0px 0px; */
+    transform: scale(1.05);
+    transition: box-shadow .2s ease;
+    transition: transform .1s ease-in-out;
+}
+
+.ad-name{
+    font-size: 1.3rem;
+    /* text-align: center; */
+    height: 3.5rem;
+}
+  
+.price{
+    font-size: 1.7rem;
+    text-align: right;
+    width:100%;
+    padding-right: 20px;
+    margin-bottom: 10px;
+}
+  
+.tags{
+    font-size: .75rem;
+    font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
+    color:darkgray;
+    text-align: left;
+    /* width: 100%; */
+}
+
+/* Global errors */
+.global-errors {
+    padding: 20% 10%;
+}
+
+/* Buttons */
+
+.buttonAdd,button{
+    background-color: white;
+    border-color: #109c8a;
+    border-radius: 20px;
+    border-style: solid;
+    color: #109c8a;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1rem;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.buttonAdd.hidden{
+    visibility: hidden;
+}
+  
+.buttonAdd:hover, button:hover{
+    
+    background-color: #109c8a;
+    color: white;
+}
+  
+.buttonAdd:active, button:active{
+    /* background-color: white;
+    color: #109c8a; */
+    transform: scale(.9);
+    transition: transform .1s ease-in-out;
+}
+
+.pag-button{
+    padding: 0 5px 0 5px;
+    margin-top: 1rem;
+    margin: 10px 3px 0 3px;
+}
+
+.pag-button.current {
+    /* color: white;
+    background-color: green; */
+    font-size: 1.4rem;
+    position: relative;
+    top: 2px;
+    padding: 0px 6px 0px 6px;
+    border-radius: 25px;
+}
+
+.search-form-container{
+    padding-left: 10px;
+    padding-bottom: 20px;
+    padding-top: 10px;
+}
+
+input{
+    font-size: .9rem;
+    border-radius: 5px;
+    border-style: solid;
+    border-color: rgb(224, 224, 224);
+}
+
+select{
+    font-size: 1rem;
+}
+
+button{
+    font-size: .9rem;
+    border-radius: 15px;
+    /* border-style: none; */
+    padding-left: .8rem;
+    padding-right: .8rem;
+}
+
+.logout-icon{
+    position: relative;
+    top:2px;
+}
+
+.message{
+    background-color: white;
+    font-family: SanchezFont;
+    font-size: 1.5rem;
+    text-align: center;
+    padding-bottom:3.6rem;
+}
+
+.message.main-none{
+    background-color: rgb(243, 242, 242);;
+}
+
+.notification.is-success{
+    width: 50vw;
+    position: absolute;
+    top: 80px;
+    left: 25vw;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.notification.is-success.fade{
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.notification.is-danger{
+    width: 50vw;
+    position: absolute;
+    top: 80px;
+    left: 25vw;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.delete-button {
+    color: red;
+    background-color: white;
+    border-color: rgb(233, 73, 73,.9);
+    margin-left: 3rem;
+}
+.delete-button:hover {
+    background-color: red;;
+}
+
+.delete-button.hidden, .edit-button.hidden{
+    visibility: hidden;
+}
+
+/* Registro/Login */
+
+.login-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3rem;
+    
+  /* margin-left: auto;
+  margin-right: auto; */
+}
+
+.form-login{
+    border: 3px solid black;
+    border-radius: 25px;
+    border-color: #1c8d7e;
+    background-color: white;
+    padding: 25px 25px 25px 25px;
+    display: flex;
+    flex-direction: column;
+    width:90%;
+    max-width: 400px;
+}
+
+input[type='password'],
+input[type='email'],
+.login-button,
+.form-login-email
+{
+    border-radius: 20px;
+  /* width: 100%; */
+  font-size: 1rem;
+  padding: 0.5rem;
+  margin:.7rem;
+}
+
+.login-button {
+    padding: 0.5rem;
+    font-size: 1.1rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    min-width: 10rem;
+    color:1c8d7e;
+    border-radius: 20px;
+    border-width: 2px;
+    border-color: 1c8d7e;
+    border-style:solid;
+    background: rgb(38, 192, 172,0.2);
+    cursor: pointer;
+  }
+
+  .login-button:active{
+      transform: scale(.9);
+      transition: .2 ease;
+  }
+
+  .login-button:disabled,
+  .login-button[disabled]{
+    background-color: rgb(230, 227, 227);
+    color: white;
+    border-color: white;
+    cursor: not-allowed;
+  }
+
+  .login-link{
+      padding-top: 20px;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      /* width:300px;
+      text-align: left; */
+      
+  }
