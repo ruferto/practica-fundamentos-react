@@ -50,6 +50,7 @@ const AdsList = ({ queries, setQueries }) => {
   React.useEffect(() => {
       getLatestAdverts().then(setAds);    
   }, []);
+ 
   
   const filtered = ads.filter( ad => 
     ad.price >= queries.precio[0] &&
@@ -75,13 +76,13 @@ const AdsList = ({ queries, setQueries }) => {
 
     
     return (
-      <div>
+      <>
         {/* <div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div> */}
         <QueryForm queries={queries} setQueries={setQueries} handleChange={handleChange} handleReset={handleReset}/>
         <div className='ads-list'>
           {adsElement.length !==0 ? adsElement : <div style={{fontSize: 20, paddingTop:40, textAlign:'center'}}>No hay anuncios con ese filtro<br /><a href='/login'>Prueba a crear uno</a></div>}{/*<Redirect to={`/login`} />}*/}
         </div>
-      </div>
+      </>
     );
   }
   

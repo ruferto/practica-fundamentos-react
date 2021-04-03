@@ -2,6 +2,7 @@ import React from 'react';
 import { deleteAdvert, getAdvertDetail } from '../api/adverts'
 import {Link} from 'react-router-dom';
 import {Redirect} from 'react-router-dom';
+import ConfirmationPanel from './ConfirmationPanel';
 
 const AdDetail = ({adId, queries}) => {
     const [ad, setAd] = React.useState();
@@ -51,10 +52,7 @@ const AdDetail = ({adId, queries}) => {
     return <div style={{padding:30, textAlign:'center'}}>
         
                 {tryToDelete ? 
-                <div style={{backgroundColor: 'pink', width:300, left:'50%', zIndex:3, position: 'absolute', marginLeft: '-150px', padding: 10, borderStyle:'solid', borderRadius:'20px', borderWidth:'2px', borderColor:'red'}}>
-                    <div style={{paddingBottom:10, fontSize:19}}>Are you sure?<br /><span style={{fontSize:10}}>(This action can't be undone)</span></div>
-                    <button onClick={cancelDelete}>Cancel</button>
-                    <button className='delete-button' onClick={deleteSure}>Sure</button></div> : ''}
+                <ConfirmationPanel deleteSure={deleteSure} cancelDelete={cancelDelete} message={'Are you sure?'} subtitle={'(This action can\'t be undone)'} /> : ''}
                 <div style={{paddingTop:20, paddingBottom:20}}>
                     <Link to={{pathname:'/', queries: queries}}>
                         <button>Back</button>

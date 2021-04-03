@@ -21,8 +21,8 @@ export const logout = () => {
   });
 };
 
-export const aboutMe = credentials => {
-  
-  return client.post('/api/auth/me', credentials);
+export const aboutMe = async credentials => {
+  console.log('pasa')
+  return await client.get('/api/auth/me', credentials);
     
 };
