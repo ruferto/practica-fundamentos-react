@@ -9,10 +9,10 @@ const TitleApp = ({isLogged, onLogout}) => {
   const [me, setMe] = React.useState(null);
 
   React.useEffect(() => {
-    getMe();
-    console.log('cambio')
-    
-  }, []);
+    if(isLogged){
+      getMe();
+    }
+  }, [isLogged]);
 
   const getMe = async () => {
     await aboutMe().then(setMe);
