@@ -1,6 +1,8 @@
 import React from 'react';
 import { login } from '../api/auth.js';
+// import storage from '../utils/storage.js';
 import { AuthContextConsumer } from './auth/context'
+// import { aboutMe } from '../api/auth';
 
 const Login = (authValue) => {
     const { onLogin, isLoading, handleStartLoading, handleFinishLoading } = authValue;
@@ -42,33 +44,35 @@ const Login = (authValue) => {
             break;
         }
     }
+    // const setProfile = async () => {
+    //   const profile = await aboutMe();
+    //   console.log(storage.set('profile', {username: profile.username, queries: null}));
+    // }
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         try{
-          handleStartLoading()
-            await login(credentials).then(onLogin);
-            handleFinishLoading()
+          handleStartLoading();
+            await login(credentials).then(onLogin); //.then(setProfile);
+            handleFinishLoading();
         }catch(error){
             console.log(error);
-            handleFinishLoading()
+            handleFinishLoading();
         }
     }
 
-    
-    
-    return <div className="login-container">
+    return <div className='login-container'>
 
-    <form className="form-login" method="GET" onSubmit={handleSubmit}>
-        <input className="form-login-email" name="email" id="email" placeholder="email" onChange={handleChange} disabled={isLoading} />
-        <input className="form-login-password"name="password" id="password" type="password" placeholder="Contraseña" onChange={handleChange} disabled={isLoading} />
-        <button className="login-button" disabled={isLoading || !email || !password || !validEmail} >Login</button>
+    <form className='form-login' onSubmit={handleSubmit}>
+        <input className='form-login-email' name='email' id='email' placeholder='email' onChange={handleChange} disabled={isLoading} />
+        <input className='form-login-password' name='password' id='password' type='password' placeholder='Contraseña' onChange={handleChange} disabled={isLoading} />
+        <button className='login-button' disabled={isLoading || !email || !password || !validEmail} >Login</button>
         <div style={{display: 'flex', flexDirection: 'row-reverse'}}>
             <input type='checkbox' id='wantsToBeRemembered' name='wantsToBeRemembered' defaultChecked={credentials.wantsToBeRemembered} onClick={handleChange} disabled={isLoading}/>&nbsp;
             <label style={{fontSize: 12}} htmlFor='wantsToBeRemembered' >Remember me</label>
         </div>
     </form>
-    {isLoading ? <div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div> : ''}
+    {isLoading ? <div className='lds-roller'><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div> : ''}
 </div>
 
 }
