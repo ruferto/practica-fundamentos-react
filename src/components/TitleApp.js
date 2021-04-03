@@ -3,9 +3,6 @@ import {Link} from 'react-router-dom';
 import { logout } from '../api/auth';
 import { AuthContextConsumer } from './auth/context';
 import { aboutMe } from '../api/auth';
-import client from '../api/client'
-
-
 
 const TitleApp = ({isLogged, onLogout}) => {
 
