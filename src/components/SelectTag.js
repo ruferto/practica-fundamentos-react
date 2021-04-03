@@ -4,13 +4,11 @@ import Dataservice from '../Dataservice';
 
 const SelectTag = ({ handleChange, selected}) => {
 
-    
     const [tags, setTags] = React.useState([]);
     React.useEffect( ()=> {
         Dataservice.getTags().then(setTags);
     },[])
     
-
     const tagsList = tags.map(tag => {
         return {label: tag, value: tag }
     })

@@ -17,7 +17,12 @@ export const login = credentials => {
 export const logout = () => {
   return Promise.resolve().then(() => {
     resetClient();
-    console.log('adiossssss')
     storage.remove('auth');
   });
+};
+
+export const aboutMe = credentials => {
+  
+  return client.post('/api/auth/me', credentials);
+    
 };

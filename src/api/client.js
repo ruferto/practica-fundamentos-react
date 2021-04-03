@@ -32,11 +32,8 @@ client.interceptors.response.use(
 );
 
 export const configureClient = ({ accessToken }) => {
-  console.log(accessToken)
   if (accessToken) {
     setAuthorizationHeader(accessToken);
-  }else{
-    console.log('cacafu')
   }
 };
 

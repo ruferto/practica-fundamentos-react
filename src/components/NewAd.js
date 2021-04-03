@@ -61,11 +61,11 @@ const NewAd = () => {
         <form className="form-add" method="POST" onSubmit={handleSubmit}>
 
             <div>
-                <label for="name" ><br />Nombre</label><br />
+                <label htmlFor="name" ><br />Nombre</label><br />
                 <input type="text" name="name" className="ad-name" id="name" placeholder="Artículo" onChange={handleChange}/>
             </div>
             <div>
-                <label for="precio">Precio</label><br />
+                <label htmlFor="precio">Precio</label><br />
                 <input type="number" step="0.01" min="0" name="price" id="price" className="ad-price" placeholder="0,00" onChange={handleChange} />
                 <div>
                     <div><input id='sale' name='sale' type='radio' value={true} onChange={handleChange} defaultChecked /><label>Sale</label></div>
@@ -74,11 +74,11 @@ const NewAd = () => {
             </div>
 
             <div>
-                <label for="tags">Tags</label><br />
+                <label htmlFor="tags">Tags</label><br />
             </div>
             <SelectTag handleChange={handleChange} />
             <div>
-                <label for="photo">Imagen</label><br />
+                <label htmlFor="photo">Imagen</label><br />
                 <input ref={fileRef} type="file" className="ad-photo" name="photo" id="photo" accept="image/*" onChange={handleChange} />
             </div>
             <button type="submit" className="buttonAdd" >Publicar</button>

@@ -1,31 +1,49 @@
 import React from 'react';
-import Tags from './Tags.js';
-import QueryForm from './QueryForm.js';
+import Tags from './Tags';
+import QueryForm from './QueryForm';
 import { Link } from 'react-router-dom';
-import { getLatestAdverts } from '../api/adverts.js';
+import { getLatestAdverts } from '../api/adverts';
+import storage from '../utils/storage';
 
 const QUERIES_KEY = 'queries';
 
 const AdsList = ({ queries, setQueries }) => {
 
-    const handleChange = (event) => { 
+  const handleChange = (event) => { 
 
-      setQueries(oldValue => {
-            const newValue = event.target ?
-            {
-              ...oldValue,
-              [event.target.name]: event.target.value,
-            } :
-            {
-              ...oldValue,
-              tags: event.length ? event : ''
-            }
-            ;
-            localStorage.setItem(QUERIES_KEY, JSON.stringify(newValue));
-            return newValue;
-          });
-          
+    setQueries(oldValue => {
+      const newValue = event.target ?
+      {
+        ...oldValue,
+        [event.target.name]: event.target.value,
+      } :
+      {
+        ...oldValue,
+        tags: event.length ? event : ''
       }
+      ;
+      saveQueries(newValue);
+        return newValue;
+    });
+  }
+
+  const handleReset = () => {
+    
+      const cleanFilter = {
+        id:'',
+        nombre:'',
+        precio:[0,5000],
+        venta:'',
+        tags:''
+      };
+      setQueries(cleanFilter);
+    saveQueries(cleanFilter);
+
+  }
+
+  const saveQueries = (value) => {
+    storage.set(QUERIES_KEY, value);
+  }
 
   const [ads, setAds] = React.useState([]);
   
@@ -33,7 +51,6 @@ const AdsList = ({ queries, setQueries }) => {
       getLatestAdverts().then(setAds);    
   }, []);
   
-
   const filtered = ads.filter( ad => 
     ad.price >= queries.precio[0] &&
     ad.price <= queries.precio[1] &&
@@ -59,7 +76,8 @@ const AdsList = ({ queries, setQueries }) => {
     
     return (
       <div>
-        <QueryForm queries={queries} setQueries={setQueries} handleChange={handleChange}/>
+        {/* <div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div> */}
+        <QueryForm queries={queries} setQueries={setQueries} handleChange={handleChange} handleReset={handleReset}/>
         <div className='ads-list'>
           {adsElement.length !==0 ? adsElement : <div style={{fontSize: 20, paddingTop:40, textAlign:'center'}}>No hay anuncios con ese filtro<br /><a href='/login'>Prueba a crear uno</a></div>}{/*<Redirect to={`/login`} />}*/}
         </div>
