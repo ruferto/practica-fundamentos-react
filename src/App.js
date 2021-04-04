@@ -7,7 +7,10 @@ import LoginPage from './components/LoginPage';
 import { AuthContextProvider } from './components/auth/context';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import PrivateRoute from './components/PrivateRoute';
+import { aboutMe } from './api/auth';
+import storage from './utils/storage'; 
 
+const QUERIES_KEY = 'queries'
 function App({ isInitiallyLogged }) {
   const [isLogged, setIsLogged] = React.useState(isInitiallyLogged);
   const handleLogin = () => {
@@ -17,8 +20,19 @@ function App({ isInitiallyLogged }) {
   const handleLogout = () => setIsLogged(false);
 
   const [isLoading, setIsLoading] = React.useState(false);
+  const [profile, setProfile] = React.useState(null);
   const handleStartLoading = () => setIsLoading(true);
   const handleFinishLoading = () => setIsLoading(false);
+
+  React.useEffect(() => {
+    if(isLogged){
+      getMe();
+    }
+  }, [isLogged]);
+
+  const getMe = async () => {
+    await aboutMe().then(setProfile);//.then(console.log(profile));
+  };
 
   const authValue = {
     isLogged,
@@ -27,12 +41,15 @@ function App({ isInitiallyLogged }) {
     isLoading,
     setIsLoading,
     handleStartLoading,
-    handleFinishLoading
+    handleFinishLoading,
+    profile,
+    handleProfile: setProfile
   };
 
+      //console.log(profile.username);
+
   const [queries, setQueries] = React.useState(
-    
-    JSON.parse(localStorage.getItem('queries')) ||
+    JSON.parse(storage.get(QUERIES_KEY)) ||
       {
         id:'',
         nombre:'',

@@ -10,6 +10,10 @@ const PriceRange = ({initialRange, onChange}) => {
 
   const [valuesState, setValuesState] = React.useState(initialRange);
 
+  React.useEffect(() => {
+    setValuesState(initialRange);
+    }, [initialRange])
+
     const changeRange = (values) => {
         setValuesState(values);
         onChange({

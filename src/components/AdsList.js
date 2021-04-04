@@ -8,7 +8,7 @@ import storage from '../utils/storage';
 
 const QUERIES_KEY = 'queries';
 
-const AdsList = ({ queries, setQueries }) => {
+const AdsList = ({ queries, setQueries, me }) => {
 
   const handleChange = (event) => { 
 
@@ -44,13 +44,21 @@ const AdsList = ({ queries, setQueries }) => {
 
   const saveQueries = (value) => {
     storage.set(QUERIES_KEY, value);
+    //storage.set(me, value);
   }
 
   const [ads, setAds] = React.useState([]);
   
   React.useEffect(() => {
-      getLatestAdverts().then(setAds);    
-  }, []);
+      getLatestAdverts().then(setAds);
+      // console.log('qq '+me)
+      // if(storage.get(me.toString())){
+      //   setQueries(JSON.parse(storage.get(me.toString())));
+      //   console.log('carga')
+      // }else{
+      //   console.log('acaca')
+      // }
+  }, []); //[me]);
  
   
   const filtered = ads.filter( ad => 

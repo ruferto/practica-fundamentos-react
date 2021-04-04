@@ -38,9 +38,9 @@ const QueryForm = ( {queries, setQueries, handleChange, handleReset} ) => {
         <option value="false" >Compra</option>
       </select>
       Tags: <SelectTag id='precio' name='precio' handleChange={handleChange} selected={queries.tags}/>
-      <PriceRange initialRange={queries.precio} onChange={handleChange} />
+      <PriceRange initialRange={queries.precio} value={queries.precio} onChange={handleChange} />
   </form>
-  {/* <button onClick={handleReset}>Clean</button> */}
+  <button onClick={handleReset}>Clean</button>
   </>;
 
 }

@@ -14,7 +14,10 @@ const SelectTag = ({ handleChange, selected}) => {
     })
 
     const selectedTags = (selected && selected.length) ? selected.map( (tag) => {return {label: tag, value: tag}} ): [];
-
+    // const [selectedTags, setSelectedTags] = React.useState((selected && selected.length) ? selected.map( (tag) => {return {label: tag, value: tag}} ): [])
+    // React.useEffect(() => {
+    //     setSelectedTags( selected.length ? selected.map( (tag) => {return {label: tag, value: tag}} ): []);
+    // }, [selected]);
 
     const changeTags = (event) => {
         if(handleChange){
@@ -30,7 +33,7 @@ const SelectTag = ({ handleChange, selected}) => {
         })
     }
     return (
-        <Select styles={customStyles} defaultValue={selectedTags} options={ tagsList } onChange={changeTags} isMulti />
+        <Select styles={customStyles} value={selectedTags} defaultValue={selectedTags} options={ tagsList } onChange={changeTags} isMulti />
     )
 }
 

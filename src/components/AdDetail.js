@@ -3,22 +3,14 @@ import { deleteAdvert, getAdvertDetail } from '../api/adverts'
 import {Link} from 'react-router-dom';
 import {Redirect} from 'react-router-dom';
 import ConfirmationPanel from './ConfirmationPanel';
+import NotFoundPage from './NotFoundPage';
 
-const AdDetail = ({adId, queries}) => {
+const AdDetail = ({adId, queries, setQueries}) => {
     const [ad, setAd] = React.useState();
     const [deletedAd, setDeletedAd] = React.useState(null);
     const [tryToDelete, setTryToDelete] = React.useState(false);
 
     const handleDelete = async ()=>{
-        // eslint-disable-next-line no-restricted-globals
-        // if (confirm('Are you sure?')){
-        //     try{
-        //         const res = await deleteAdvert(adId.params.id);
-        //         setDeletedAd(res)
-        //     }catch(error){
-        //         console.log(error);
-        //     }            
-        // }
         setTryToDelete(true);
     }
 
@@ -48,8 +40,8 @@ const AdDetail = ({adId, queries}) => {
     if(deletedAd){
         return <Redirect to="/" />
     }
-    if(!ad) return <div>Advert not found</div>
-    return <div style={{padding:30, textAlign:'center'}}>
+    if(!ad) return <NotFoundPage />
+    return <div style={{textAlign:'center'}}>
         
                 {tryToDelete ? 
                 <ConfirmationPanel deleteSure={deleteSure} cancelDelete={cancelDelete} message={'Are you sure?'} subtitle={'(This action can\'t be undone)'} /> : ''}
@@ -59,11 +51,20 @@ const AdDetail = ({adId, queries}) => {
                     </Link>
                     <button className='delete-button' onClick={handleDelete}>Delete</button>
                 </div>
-
-                <div style={{padding:10}}>{ad.name}</div>
-                <div>{ad.sale ? 'For sale' : 'Someone buys'}</div>
-                <div>Price: {ad.price}</div>
-                <img src={ad.photo ? `${process.env.REACT_APP_API_BASE_URL}${ad.photo}` : '../../images/back.png'} alt={ad.name} />
+                <div style={{display: 'flex', flexDirection:'row-end', flexWrap:'wrap', justifyContent:'left', float:'right', paddingRight:'10vw'}}>
+                    <div style={{display: 'flex', flexDirection:'column', textAlign:'right', fontFamily:'SanchezFont', fontSize:35}}>
+                        <div style={{padding:10}}>
+                            <div>
+                                {ad.sale ? 'For sale' : 'Wanted'}
+                            </div>
+                            <span style={{fontSize:50}}><b>{ad.name}</b></span></div>
+                
+                            <div>Price: <span style={{fontSize:45}}>{ad.price}€</span></div>
+                        </div>
+                        <div style={{width:'50vw'}}>
+                            <img style={{borderRadius:'25px', maxHeight:'70vh'}} src={ad.photo ? `${process.env.REACT_APP_API_BASE_URL}${ad.photo}` : '../../images/back.png'} alt={ad.name} />
+                        </div>
+                    </div>
             </div>
 }
 

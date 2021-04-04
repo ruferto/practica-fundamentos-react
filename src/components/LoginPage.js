@@ -46,14 +46,14 @@ const Login = (authValue) => {
     }
     // const setProfile = async () => {
     //   const profile = await aboutMe();
-    //   console.log(storage.set('profile', {username: profile.username, queries: null}));
+    //   console.log(storage.set(profile.username, null));
     // }
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         try{
           handleStartLoading();
-            await login(credentials).then(onLogin); //.then(setProfile);
+            await login(credentials).then(onLogin);//.then(setProfile);
             handleFinishLoading();
         }catch(error){
             console.log(error);
