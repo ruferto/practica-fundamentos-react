@@ -49,7 +49,7 @@ function App({ isInitiallyLogged }) {
       //console.log(profile.username);
 
   const [queries, setQueries] = React.useState(
-    JSON.parse(storage.get(QUERIES_KEY)) ||
+     profile ? JSON.parse(storage.get(profile.username)) :
       {
         id:'',
         nombre:'',

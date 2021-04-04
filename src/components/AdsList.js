@@ -43,22 +43,24 @@ const AdsList = ({ queries, setQueries, me }) => {
   }
 
   const saveQueries = (value) => {
-    storage.set(QUERIES_KEY, value);
-    //storage.set(me, value);
+    //storage.set(QUERIES_KEY, value);
+    storage.set(me, value);
   }
 
   const [ads, setAds] = React.useState([]);
   
   React.useEffect(() => {
       getLatestAdverts().then(setAds);
-      // console.log('qq '+me)
-      // if(storage.get(me.toString())){
-      //   setQueries(JSON.parse(storage.get(me.toString())));
-      //   console.log('carga')
-      // }else{
-      //   console.log('acaca')
-      // }
-  }, []); //[me]);
+      if(me){
+      console.log('qq '+me)
+      if(storage.get(me)){
+        setQueries(JSON.parse(storage.get(me.toString())));
+        console.log('carga')
+      }else{
+        console.log('acaca')
+      }
+    }else console.log('no hay me')
+  }, [me]); //[me]);
  
   
   const filtered = ads.filter( ad => 
