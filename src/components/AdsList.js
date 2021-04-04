@@ -1,5 +1,6 @@
 import React from 'react';
 import Tags from './Tags';
+import { AuthContextConsumer } from '../components/auth/context';
 import QueryForm from './QueryForm';
 import { Link } from 'react-router-dom';
 import { getLatestAdverts } from '../api/adverts';
@@ -85,5 +86,20 @@ const AdsList = ({ queries, setQueries }) => {
       </>
     );
   }
+
+  const ConnectedAdsList = props => {
+    return (
+      <AuthContextConsumer>
+        {value => {
+          return (
+            <AdsList
+              me={value.profile ? value.profile.username : null}
+              {...props}
+            />
+          );
+        }}
+      </AuthContextConsumer>
+    );
+  };
   
-  export default AdsList;
+  export default ConnectedAdsList;
