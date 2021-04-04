@@ -48,9 +48,11 @@ const AdsList = ({ queries, setQueries, me }) => {
   }
 
   const [ads, setAds] = React.useState([]);
+  const [isLoading, setIsLoading] = React.useState(true);
+  const stop = ()=>{setIsLoading(false)}
   
   React.useEffect(() => {
-      getLatestAdverts().then(setAds);
+      getLatestAdverts().then(setAds).then(stop);
       if(me){
       console.log('qq '+me)
       if(storage.get(me)){
@@ -85,7 +87,7 @@ const AdsList = ({ queries, setQueries, me }) => {
       </li>
   });
 
-    
+    if(isLoading) return <div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
     return (
       <>
         {/* <div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div> */}

@@ -71,7 +71,7 @@ function App({ isInitiallyLogged }) {
           <PrivateRoute exact path='/adverts' render= {() => (isLogged ? <div><AdsList queries={queries} setQueries={setQueries} /></div> : <Redirect to='/login' />)} />
           <PrivateRoute path='/advert/new' render={ () => <><NewAd /></> } />
           <PrivateRoute path='/advert/:id' render={({match}) => <div><AdDetail adId={match} /></div>  } />
-          <Route exact path='/login' render={ (authValue, getMe) => !isLogged ? <><LoginPage /></> : <Redirect to='/' />}/>
+          <Route exact path='/login' render={ () => !isLogged ? <><LoginPage /></> : <Redirect to='/' />}/>
           {/* <Route exact path='/login' component={ LoginPage }/> */}
           <Route path="/404">
             <div

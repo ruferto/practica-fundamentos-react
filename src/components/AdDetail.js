@@ -9,6 +9,7 @@ const AdDetail = ({adId, queries, setQueries}) => {
     const [ad, setAd] = React.useState();
     const [deletedAd, setDeletedAd] = React.useState(null);
     const [tryToDelete, setTryToDelete] = React.useState(false);
+    const [isLoading, setIsLoading] = React.useState(true)
 
     const handleDelete = async ()=>{
         setTryToDelete(true);
@@ -27,12 +28,14 @@ const AdDetail = ({adId, queries, setQueries}) => {
     const cancelDelete = () => {
         setTryToDelete(false);
     }
-
+const stop=()=>{setIsLoading(false)}
     React.useEffect(() => {
         try{
-            getAdvertDetail(adId.params.id).then(setAd);
+            setIsLoading(true)
+            getAdvertDetail(adId.params.id).then(setAd).then(stop);
         }catch(error){
-            console.error(error);
+            //console.error(error);
+            stop();
         }
         
     }, [adId.params.id]);
@@ -40,6 +43,8 @@ const AdDetail = ({adId, queries, setQueries}) => {
     if(deletedAd){
         return <Redirect to="/" />
     }
+    if(isLoading) return <div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+
     if(!ad) return <NotFoundPage />
     return <div style={{textAlign:'center'}}>
         
