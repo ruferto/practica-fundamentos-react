@@ -84,7 +84,8 @@ const AdsList = ({ queries, setQueries, me }) => {
       return <div style={{color: 'white', backgroundColor:'red', marginTop:70, padding: 10, borderRadius: '15px', width:'33vw', textAlign:'center', marginTop: 100, marginLeft: 'auto', marginRight: 'auto'}}>Error: {error.message}</div>
     if(isLoading)
       return <div className='lds-roller'><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>;
-
+    if(ads.length === 0)
+      return <div style={{fontSize: 20, paddingTop:40, textAlign:'center'}}>Aún no hay ningún anuncio publicado <br /><br /><a href='/login'>Sé el primero en crear uno</a></div>
     return <>
         <QueryForm queries={queries} setQueries={setQueries} handleChange={handleChange} handleReset={handleReset}/>
         <div className='ads-list'>

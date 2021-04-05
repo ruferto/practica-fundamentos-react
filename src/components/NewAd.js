@@ -13,6 +13,7 @@ const NewAd = () => {
     });
 
     const [created, setCreated] = React.useState();
+    const [tags, setTags] = React.useState([])
 
     const handleSubmit = async(event) => {
         event.preventDefault();
@@ -76,7 +77,7 @@ const NewAd = () => {
             <div>
                 <label htmlFor='tags'>Tags</label><br />
             </div>
-            <SelectTag handleChange={handleChange} />
+            <SelectTag handleChange={handleChange} selected={tags} setTagsForNew={setTags}/>
             <div>
                 <label htmlFor='photo'>Photo</label><br />
                 <input ref={fileRef} type='file' className='ad-photo' name='photo' id='photo' accept='image/*' onChange={handleChange} />

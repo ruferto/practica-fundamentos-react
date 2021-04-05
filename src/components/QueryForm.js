@@ -2,7 +2,7 @@ import React from 'react';
 import SelectTag from './SelectTag.js';
 import PriceRange from './PriceRange.js'
 
-const QueryForm = ( {queries, setQueries, handleChange, handleReset} ) => {
+const QueryForm = ( {queries, handleChange, handleReset} ) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -18,10 +18,10 @@ const QueryForm = ( {queries, setQueries, handleChange, handleReset} ) => {
         <option value='true' >Sell</option>
         <option value='false' >Buy</option>
       </select>
-      Tags: <SelectTag id='precio' name='precio' handleChange={handleChange} selected={queries.tags}/>
+      Tags: <SelectTag id='tags' name='tags' handleChange={handleChange} selected={queries.tags}/>
       <PriceRange initialRange={queries.precio} value={queries.precio} onChange={handleChange} />
   </form>
-  <button onClick={handleReset}>Clean</button>
+  <button onClick={handleReset}>Clean<br />filters</button>
   </>;
 
 }

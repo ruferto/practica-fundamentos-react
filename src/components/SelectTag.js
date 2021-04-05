@@ -2,7 +2,7 @@ import React from 'react';
 import Select from 'react-select';
 import { getTags } from '../api/adverts';
 
-const SelectTag = ({ handleChange, selected}) => {
+const SelectTag = ({ handleChange, selected, setTagsForNew}) => {
 
     const [tags, setTags] = React.useState([]);
     React.useEffect( ()=> {
@@ -18,6 +18,7 @@ const SelectTag = ({ handleChange, selected}) => {
     const changeTags = (event) => {
         if(handleChange){
             const qTags = event.map( tag => tag.label );
+            if(setTagsForNew) setTagsForNew(qTags)
             handleChange(qTags);
         }
     }
