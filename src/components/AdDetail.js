@@ -16,15 +16,20 @@ const AdDetail = ({adId}) => {
         setTryToDelete(true);
     }
 
+    React.useEffect(() => {
+        return () => {
+            setTryToDelete(false);
+        }
+    }, []);
+
     const deleteSure = async () => {
         try{
             const res = await deleteAdvert(adId.params.id);
             setDeletedAd(res);
+            setTryToDelete(false);
         }catch(error){
             console.log(error);
             setError(error);
-        }finally{
-            setTryToDelete(false);
         }
     }
 
@@ -69,7 +74,7 @@ const AdDetail = ({adId}) => {
                     </Link>
                     <button className='delete-button' onClick={handleDelete}>Delete</button>
                 </div>
-                <div style={{display: 'flex', flexDirection:'row-end', flexWrap:'wrap', justifyContent:'left', float:'right', paddingRight:'10vw'}}>
+                <div style={{display: 'flex', flexDirection:'row-end', flexWrap:'wrap', justifyContent:'space-evenly'}}>
                     <div style={{display: 'flex', flexDirection:'column', textAlign:'right', fontFamily:'SanchezFont', fontSize:35}}>
                         <div style={{padding:10}}>
                             <div>
@@ -80,7 +85,7 @@ const AdDetail = ({adId}) => {
                             <div>Price: <span style={{fontSize:45}}>{ad.price}€</span></div>
                         </div>
                         <div style={{width:'50vw'}}>
-                            <img style={{borderRadius:'25px', maxHeight:'70vh'}} src={ad.photo ? `${process.env.REACT_APP_API_BASE_URL}${ad.photo}` : '../../images/back.png'} alt={ad.name} />
+                            <img style={{borderRadius:'25px', maxHeight:'60vh'}} src={ad.photo ? `${process.env.REACT_APP_API_BASE_URL}${ad.photo}` : '../../images/back.png'} alt={ad.name} />
                         </div>
                     </div>
             </div>

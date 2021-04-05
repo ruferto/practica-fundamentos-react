@@ -47,11 +47,11 @@ const Login = (authValue) => {
         try{
           handleStartLoading();
             await login(credentials).then(onLogin);
+            handleFinishLoading();
         }catch(error){
             console.log(error);
             setError(error);
-        }finally{
-          handleFinishLoading();
+            handleFinishLoading();
         }
     }
 

@@ -85,13 +85,13 @@ const AdsList = ({ queries, setQueries, me }) => {
     if(isLoading)
       return <div className='lds-roller'><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>;
     if(ads.length === 0)
-      return <div style={{fontSize: 20, paddingTop:40, textAlign:'center'}}>There's not adverts yet <br /><br /><a href='/login'>Be the first creating one</a></div>
+      return <div style={{fontSize: 20, paddingTop:40, textAlign:'center'}}>There are no adverts yet<br /><br /><a href='/advert/new'><button>Be the first creating one</button></a></div>
     return <>
         <QueryForm queries={queries} setQueries={setQueries} handleChange={handleChange} handleReset={handleReset}/>
         <div className='ads-list'>
           {adsElement.length !==0 ? 
           adsElement : 
-          <div style={{fontSize: 20, paddingTop:40, textAlign:'center'}}>No hay anuncios con ese filtro<br /><a href='/login'>Prueba a crear uno</a></div>}
+          <div style={{fontSize: 20, paddingTop:40, textAlign:'center'}}>There are no adverts with this filter<br /><br /><a href='/advert/new' style={{color:'green'}}><button>You can create one</button></a></div>}
         </div>
       </>;
   }

@@ -5,6 +5,12 @@ import { saveAd } from '../api/adverts'
 
 const NewAd = () => {
 
+    React.useEffect(() => {
+        return () => {
+            stopLoading();
+        }
+    }, []);
+
     const [formValues, setFormValues] = React.useState({
         name:'',
         price:0,
@@ -31,8 +37,6 @@ const NewAd = () => {
         }catch(error){
             setError(error)
             console.log(error);
-        }finally{
-            stopLoading();
         }
     }
 
