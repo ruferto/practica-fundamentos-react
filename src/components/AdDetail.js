@@ -22,6 +22,7 @@ const AdDetail = ({adId}) => {
             setDeletedAd(res)
         }catch(error){
             console.log(error);
+            setError(error);
             setTryToDelete(false)
         }
     }
@@ -52,7 +53,11 @@ const AdDetail = ({adId}) => {
     }
     if(isLoading) return <div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
 
-    if(!ad && error.status === 404) return <NotFoundPage />
+    if(error && error.status === 404) return <NotFoundPage />
+
+    if(error)
+      return <div style={{color: 'white', backgroundColor:'red', marginTop:70, padding: 10, borderRadius: '15px', width:'33vw', textAlign:'center', marginTop: 100, marginLeft: 'auto', marginRight: 'auto'}}>Error: {error.message}</div>
+
     return <div style={{textAlign:'center'}}>
         
                 {tryToDelete ? 

@@ -12,7 +12,8 @@ const Login = (authValue) => {
         validPassword: false,
         wantsToBeRemembered: false
     });
-    const {email, password, validEmail} = credentials;    
+    const {email, password, validEmail} = credentials;
+    const [error, setError] = React.useState(null); 
 
     const handleChange = (event) => {
         
@@ -36,6 +37,7 @@ const Login = (authValue) => {
               ...oldValue,
               [event.target.name]: event.target.value,
             }));
+            setError(null);
             break;
         }
     }
@@ -48,6 +50,7 @@ const Login = (authValue) => {
             handleFinishLoading();
         }catch(error){
             console.log(error);
+            setError(error);
             handleFinishLoading();
         }
     }
@@ -64,6 +67,7 @@ const Login = (authValue) => {
         </div>
     </form>
     {isLoading ? <div className='lds-roller'><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div> : ''}
+    {error ? <div style={{color: 'white', backgroundColor:'red', marginTop:30, padding: 10, borderRadius: '15px'}}>Error: {error.status === 401 ? 'Wrong username or password' : error.message}</div> : ''}
 </div>
 
 }

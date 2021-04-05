@@ -1,5 +1,4 @@
 import client from './client';
-// import storage from '../utils/storage'
 
 const advertsBaseUrl = '/api/v1';
 

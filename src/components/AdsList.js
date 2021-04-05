@@ -45,10 +45,20 @@ const AdsList = ({ queries, setQueries, me }) => {
 
   const [ads, setAds] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
-  const stop = ()=>{setIsLoading(false)}
+  const stop = () => {
+    setIsLoading(false)
+  };
+  const anError = (error) => {
+    console.error(error);
+    setError(error);
+    setIsLoading(false);
+  }
+  const [error, setError] = React.useState(null);
   
   React.useEffect(() => {
-    getLatestAdverts().then(setAds).then(stop);
+
+    getLatestAdverts().then(setAds).then(stop).catch(anError);
+
     if(me){
       if(storage.get(me)){
         setQueries(JSON.parse(storage.get(me.toString())));
@@ -70,6 +80,8 @@ const AdsList = ({ queries, setQueries, me }) => {
     return <Advert ad={ad} queries={queries} key={ad.id}/>
   });
 
+    if(error)
+      return <div style={{color: 'white', backgroundColor:'red', marginTop:70, padding: 10, borderRadius: '15px', width:'33vw', textAlign:'center', marginTop: 100, marginLeft: 'auto', marginRight: 'auto'}}>Error: {error.message}</div>
     if(isLoading)
       return <div className='lds-roller'><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>;
 
