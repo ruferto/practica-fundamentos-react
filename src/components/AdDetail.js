@@ -5,11 +5,12 @@ import {Redirect} from 'react-router-dom';
 import ConfirmationPanel from './ConfirmationPanel';
 import NotFoundPage from './NotFoundPage';
 
-const AdDetail = ({adId, queries, setQueries}) => {
+const AdDetail = ({adId}) => {
     const [ad, setAd] = React.useState();
     const [deletedAd, setDeletedAd] = React.useState(null);
     const [tryToDelete, setTryToDelete] = React.useState(false);
-    const [isLoading, setIsLoading] = React.useState(true)
+    const [isLoading, setIsLoading] = React.useState(true);
+    const [error, setError] = React.useState(null);
 
     const handleDelete = async ()=>{
         setTryToDelete(true);
@@ -28,16 +29,22 @@ const AdDetail = ({adId, queries, setQueries}) => {
     const cancelDelete = () => {
         setTryToDelete(false);
     }
-const stop=()=>{setIsLoading(false)}
+
+    const stop = () => {
+        setIsLoading(false);
+    }
+
+    const anError = (e) => {
+        setError(e);stop();
+    }
+
     React.useEffect(() => {
-        try{
-            setIsLoading(true)
-            getAdvertDetail(adId.params.id).then(setAd).then(stop);
-        }catch(error){
-            //console.error(error);
-            stop();
-        }
-        
+        setIsLoading(true)
+        getAdvertDetail(adId.params.id)
+        .then(setAd)
+        .then(stop)
+        .catch(anError);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [adId.params.id]);
 
     if(deletedAd){
@@ -45,13 +52,13 @@ const stop=()=>{setIsLoading(false)}
     }
     if(isLoading) return <div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
 
-    if(!ad) return <NotFoundPage />
+    if(!ad && error.status === 404) return <NotFoundPage />
     return <div style={{textAlign:'center'}}>
         
                 {tryToDelete ? 
                 <ConfirmationPanel deleteSure={deleteSure} cancelDelete={cancelDelete} message={'Are you sure?'} subtitle={'(This action can\'t be undone)'} /> : ''}
                 <div style={{paddingTop:20, paddingBottom:20}}>
-                    <Link to={{pathname:'/', queries: queries}}>
+                    <Link to='/'>
                         <button>Back</button>
                     </Link>
                     <button className='delete-button' onClick={handleDelete}>Delete</button>

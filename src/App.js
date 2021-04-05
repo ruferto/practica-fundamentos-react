@@ -10,7 +10,7 @@ import PrivateRoute from './components/PrivateRoute';
 import { aboutMe } from './api/auth';
 import storage from './utils/storage'; 
 
-const QUERIES_KEY = 'queries'
+// const QUERIES_KEY = 'queries'
 function App({ isInitiallyLogged }) {
   const [isLogged, setIsLogged] = React.useState(isInitiallyLogged);
   const handleLogin = () => {

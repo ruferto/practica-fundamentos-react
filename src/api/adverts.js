@@ -34,3 +34,8 @@ export const saveAd = advert => {
   const url = `${advertsBaseUrl}/adverts`;
   return client.post(url, FD);
 }
+
+export const getTags = () => {
+  const url = `${advertsBaseUrl}/adverts/tags`;
+  return client.get(url);
+};
