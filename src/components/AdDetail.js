@@ -19,11 +19,11 @@ const AdDetail = ({adId}) => {
     const deleteSure = async () => {
         try{
             const res = await deleteAdvert(adId.params.id);
-            setDeletedAd(res)
+            setDeletedAd(res);
         }catch(error){
             console.log(error);
             setError(error);
-            setTryToDelete(false)
+            setTryToDelete(false);
         }
     }
 
@@ -64,7 +64,7 @@ const AdDetail = ({adId}) => {
                 <ConfirmationPanel deleteSure={deleteSure} cancelDelete={cancelDelete} message={'Are you sure?'} subtitle={'(This action can\'t be undone)'} /> : ''}
                 <div style={{paddingTop:20, paddingBottom:20}}>
                     <Link to='/'>
-                        <button>Back</button>
+                        <button>Back to list</button>
                     </Link>
                     <button className='delete-button' onClick={handleDelete}>Delete</button>
                 </div>

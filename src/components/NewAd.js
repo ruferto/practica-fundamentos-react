@@ -14,15 +14,25 @@ const NewAd = () => {
 
     const [created, setCreated] = React.useState();
     const [tags, setTags] = React.useState([]);
-    const [error, setError] = React.useState(null)
+    const [error, setError] = React.useState(null);
+    const [isLoading, setIsLoading] = React.useState(false);
+    const stopLoading = () => {
+        setIsLoading(false);
+    };
+    const startLoading = () => {
+        setIsLoading(true);
+    };
 
     const handleSubmit = async(event) => {
         event.preventDefault();
         try{
-            setCreated(await saveAd(formValues))
+            startLoading();
+            setCreated(await saveAd(formValues));
+            stopLoading();
         }catch(error){
             setError(error)
             console.log(error);
+            stopLoading();
         }
     }
 
@@ -58,6 +68,9 @@ const NewAd = () => {
     if(created){
         return <Redirect to={`/advert/${created.id}`} />
     }
+
+    if(isLoading)
+        return <div className='lds-roller'><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
     
     return <div className='new-ad-container'>
         
