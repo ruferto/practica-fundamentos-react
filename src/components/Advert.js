@@ -14,7 +14,7 @@ const Advert = ( {ad, queries} ) => {
             Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(ad.price) : 
             Intl.NumberFormat('de-DE').format(ad.price)+' €' }
         </div>
-        <div className='tags'>Etiquetas: &nbsp;<Tags tagsArray={ad.tags}/></div>
+        <div className='tags'>Tags: &nbsp;<Tags tagsArray={ad.tags}/></div>
         </div>
         </Link>
       </li>

@@ -9,8 +9,8 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 import PrivateRoute from './components/PrivateRoute';
 import { aboutMe } from './api/auth';
 import storage from './utils/storage'; 
+import NotFoundPage from './components/NotFoundPage';
 
-// const QUERIES_KEY = 'queries'
 function App({ isInitiallyLogged }) {
   const [isLogged, setIsLogged] = React.useState(isInitiallyLogged);
   const handleLogin = () => {
@@ -31,7 +31,7 @@ function App({ isInitiallyLogged }) {
   }, [isLogged]);
 
   const getMe = async () => {
-    await aboutMe().then(setProfile);//.then(console.log(profile));
+    await aboutMe().then(setProfile);
   };
 
   const authValue = {
@@ -46,8 +46,6 @@ function App({ isInitiallyLogged }) {
     handleProfile: setProfile
   };
 
-      //console.log(profile.username);
-
   const cleanFilters = {
     id:'',
     nombre:'',
@@ -60,12 +58,11 @@ function App({ isInitiallyLogged }) {
       cleanFilters);
 
   return (
-    <div className="App">
+    <div className='App'>
       
       <AuthContextProvider value={authValue} >
       <TitleApp />
         <Switch>
-          {/* <Route path='/detail/:id' render= {({match}) => (<Test adId={match} />)} /> */}
           <Route exact path='/'>
             <Redirect to='/adverts' />
           </Route>
@@ -75,18 +72,10 @@ function App({ isInitiallyLogged }) {
           <Route exact path='/login' render={ () => !isLogged ? <><LoginPage /></> : <Redirect to='/' />}/>
           {/* <Route exact path='/login' component={ LoginPage }/> */}
           <Route path="/404">
-            <div
-              style={{
-                textAlign: 'center',
-                fontSize: 48,
-                fontWeight: 'bold',
-              }}
-            >
-              404 | Not found page
-            </div>
+            <NotFoundPage />
           </Route>
           <Route>
-            <Redirect to="/404" />
+            <Redirect to='/404' />
           </Route>
 
         </Switch>

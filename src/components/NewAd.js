@@ -56,17 +56,17 @@ const NewAd = () => {
         return <Redirect to={`/advert/${created.id}`} />
     }
     
-    return <div className="new-ad-container">
+    return <div className='new-ad-container'>
         
-        <form className="form-add" method="POST" onSubmit={handleSubmit}>
+        <form className='form-add' method='POST' onSubmit={handleSubmit}>
 
             <div>
-                <label htmlFor="name" ><br />Nombre</label><br />
-                <input type="text" name="name" className="ad-name" id="name" placeholder="Artículo" onChange={handleChange}/>
+                <label htmlFor='name' ><br />Name</label><br />
+                <input type='text' name='name' className='ad-name' id='name' placeholder='Article' onChange={handleChange}/>
             </div>
             <div>
-                <label htmlFor="precio">Precio</label><br />
-                <input type="number" step="0.01" min="0" name="price" id="price" className="ad-price" placeholder="0,00" onChange={handleChange} />
+                <label htmlFor='precio'>Price</label><br />
+                <input type='number' step='0.01' min='0' name='price' id='price' className='ad-price' placeholder='0,00' onChange={handleChange} />
                 <div>
                     <div><input id='sale' name='sale' type='radio' value={true} onChange={handleChange} defaultChecked /><label>Sale</label></div>
                     <div><input id='sale' name='sale' type='radio' value={false} onChange={handleChange}/><label>Buy</label></div>
@@ -74,14 +74,14 @@ const NewAd = () => {
             </div>
 
             <div>
-                <label htmlFor="tags">Tags</label><br />
+                <label htmlFor='tags'>Tags</label><br />
             </div>
             <SelectTag handleChange={handleChange} />
             <div>
-                <label htmlFor="photo">Imagen</label><br />
-                <input ref={fileRef} type="file" className="ad-photo" name="photo" id="photo" accept="image/*" onChange={handleChange} />
+                <label htmlFor='photo'>Photo</label><br />
+                <input ref={fileRef} type='file' className='ad-photo' name='photo' id='photo' accept='image/*' onChange={handleChange} />
             </div>
-            <button type="submit" className="buttonAdd" >Publicar</button>
+            <button type='submit' className='buttonAdd' >Publish</button>
         
         </form>
     </div>

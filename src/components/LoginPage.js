@@ -1,12 +1,10 @@
 import React from 'react';
 import { login } from '../api/auth.js';
-// import storage from '../utils/storage.js';
 import { AuthContextConsumer } from './auth/context'
-// import { aboutMe } from '../api/auth';
 
 const Login = (authValue) => {
+
     const { onLogin, isLoading, handleStartLoading, handleFinishLoading } = authValue;
-    //const { isLoading, handleStartLoading, handleFinishLoading } = loginValue;
     const [credentials, setCredentials] = React.useState({
         email: '',
         password: '',
@@ -14,10 +12,7 @@ const Login = (authValue) => {
         validPassword: false,
         wantsToBeRemembered: false
     });
-    const {email, password, validEmail} = credentials;
-
-    //const [isLoading, setIsLoading] = React.useState(false);
-    
+    const {email, password, validEmail} = credentials;    
 
     const handleChange = (event) => {
         
@@ -44,16 +39,12 @@ const Login = (authValue) => {
             break;
         }
     }
-    // const setProfile = async () => {
-    //   const profile = await aboutMe();
-    //   console.log(storage.set(profile.username, null));
-    // }
-
+    
     const handleSubmit = async (event) => {
         event.preventDefault();
         try{
           handleStartLoading();
-            await login(credentials).then(onLogin);//.then(setProfile);
+            await login(credentials).then(onLogin);
             handleFinishLoading();
         }catch(error){
             console.log(error);
