@@ -1,5 +1,5 @@
 import React from 'react';
-import { deleteAdvert, getAdvertDetail } from '../api/adverts'
+import { deleteAdvert, getAdvertDetail } from '../api/adverts';
 import {Link} from 'react-router-dom';
 import {Redirect} from 'react-router-dom';
 import ConfirmationPanel from './ConfirmationPanel';

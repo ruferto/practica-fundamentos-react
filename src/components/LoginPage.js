@@ -1,5 +1,5 @@
 import React from 'react';
-import { login } from '../api/auth.js';
+import { login } from '../api/auth';
 import { AuthContextConsumer } from './auth/context'
 
 const Login = (authValue) => {

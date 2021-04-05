@@ -1,6 +1,6 @@
 import React from 'react';
 import { Redirect } from 'react-router';
-import SelectTag from './SelectTag.js';
+import SelectTag from './SelectTag';
 import { saveAd } from '../api/adverts'
 
 const NewAd = () => {

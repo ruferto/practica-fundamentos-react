@@ -1,6 +1,6 @@
 import React from 'react';
-import SelectTag from './SelectTag.js';
-import PriceRange from './PriceRange.js'
+import SelectTag from './SelectTag';
+import PriceRange from './PriceRange'
 
 const QueryForm = ( {queries, handleChange, handleReset} ) => {
 
