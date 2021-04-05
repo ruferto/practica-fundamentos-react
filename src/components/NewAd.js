@@ -13,14 +13,16 @@ const NewAd = () => {
     });
 
     const [created, setCreated] = React.useState();
-    const [tags, setTags] = React.useState([])
+    const [tags, setTags] = React.useState([]);
+    const [error, setError] = React.useState(null)
 
     const handleSubmit = async(event) => {
         event.preventDefault();
         try{
             setCreated(await saveAd(formValues))
-        }catch(e){
-            console.log(e);
+        }catch(error){
+            setError(error)
+            console.log(error);
         }
     }
 
@@ -85,6 +87,7 @@ const NewAd = () => {
             <button type='submit' className='buttonAdd' >Publish</button>
         
         </form>
+        {error ? <div style={{color: 'white', backgroundColor:'red', marginTop:70, padding: 10, borderRadius: '15px', width:'33vw', textAlign:'center', marginTop: 100, marginLeft: 'auto', marginRight: 'auto'}}>Error: {error.message}</div> : ''}
     </div>
     
 }
