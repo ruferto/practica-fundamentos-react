@@ -28,10 +28,10 @@ const NewAd = () => {
         try{
             startLoading();
             setCreated(await saveAd(formValues));
-            stopLoading();
         }catch(error){
             setError(error)
             console.log(error);
+        }finally{
             stopLoading();
         }
     }
@@ -100,7 +100,7 @@ const NewAd = () => {
             <button type='submit' className='buttonAdd' >Publish</button>
         
         </form>
-        {error ? <div style={{color: 'white', backgroundColor:'red', marginTop:70, padding: 10, borderRadius: '15px', width:'33vw', textAlign:'center', marginTop: 100, marginLeft: 'auto', marginRight: 'auto'}}>Error: {error.message}</div> : ''}
+        {error ? <div style={{color: 'white', backgroundColor:'red', padding: 10, borderRadius: '15px', width:'33vw', textAlign:'center', marginTop: 100, marginLeft: 'auto', marginRight: 'auto'}}>Error: {error.message}</div> : ''}
     </div>
     
 }

@@ -23,6 +23,7 @@ const AdDetail = ({adId}) => {
         }catch(error){
             console.log(error);
             setError(error);
+        }finally{
             setTryToDelete(false);
         }
     }
@@ -56,7 +57,7 @@ const AdDetail = ({adId}) => {
     if(error && error.status === 404) return <NotFoundPage />
 
     if(error)
-      return <div style={{color: 'white', backgroundColor:'red', marginTop:70, padding: 10, borderRadius: '15px', width:'33vw', textAlign:'center', marginTop: 100, marginLeft: 'auto', marginRight: 'auto'}}>Error: {error.message}</div>
+      return <div style={{color: 'white', backgroundColor:'red', padding: 10, borderRadius: '15px', width:'33vw', textAlign:'center', marginTop: 100, marginLeft: 'auto', marginRight: 'auto'}}>Error: {error.message}</div>
 
     return <div style={{textAlign:'center'}}>
         
