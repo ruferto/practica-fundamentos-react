@@ -2,23 +2,11 @@ import React from 'react'
 import {Link} from 'react-router-dom';
 import { logout } from '../api/auth';
 import { AuthContextConsumer } from './auth/context';
-// import { aboutMe } from '../api/auth';
 import ConfirmationPanel from './ConfirmationPanel';
 
 const TitleApp = ({isLogged, onLogout, me}) => {
 
-  // const [me, setMe] = React.useState(null);
   const [tryToLogout , setTryToLogout] = React.useState(false);
-
-  // React.useEffect(() => {
-  //   if(isLogged){
-  //     getMe();
-  //   }
-  // }, [isLogged]);
-
-  // const getMe = async () => {
-  //   await aboutMe().then(setMe);
-  // };
 
   const handleLogout = () => {
     logout().then(onLogout);
