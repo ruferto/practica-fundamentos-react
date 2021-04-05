@@ -48,15 +48,16 @@ function App({ isInitiallyLogged }) {
 
       //console.log(profile.username);
 
+  const cleanFilters = {
+    id:'',
+    nombre:'',
+    precio:[0,5000],
+    venta:'',
+    tags:''
+  };
   const [queries, setQueries] = React.useState(
-     profile ? JSON.parse(storage.get(profile.username)) :
-      {
-        id:'',
-        nombre:'',
-        precio:[0,5000],
-        venta:'',
-        tags:''
-    });
+     profile ? JSON.parse(storage.get(profile.username)) || cleanFilters :
+      cleanFilters);
 
   return (
     <div className="App">
