@@ -80,36 +80,38 @@ const NewAdvertPage = () => {
     if(isLoading)
         return <div className='lds-roller'><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
     
-    return <div className='new-ad-container'>
+    return <div style={{display: 'flex', justifyContent:'center'}}> <div className='new-ad-container'>
         
         <form className='form-add' method='POST' onSubmit={handleSubmit} noValidate >
-
+        <div className='new-ad-wrapper'>
+            <div >
             <div>
-                <label htmlFor='name' ><br />Name</label><br />
+                <label htmlFor='name' ><br />Name</label>
                 <input ref={inputRef} type='text' name='name' className='ad-name-input' id='name' placeholder='Article' onChange={handleChange}/>
             </div>
             <div>
-                <label htmlFor='precio'>Price</label><br />
-                <input type='number' step='0.01' min='0' name='price' id='price' className='ad-price' placeholder='0,00' onChange={handleChange} />
-                <div>
+                <label htmlFor='precio'>Price</label>
+                <input type='number' step='0.01' min='0' name='price' id='price' className='ad-price-input' placeholder='0,00' onChange={handleChange} />
+            </div>
+            </div>
+                <div style={{fontSize:'1.2rem', display:'flex', flexDirection:'row'}}>
                     <div><input id='sale' name='sale' type='radio' value={true} onChange={handleChange} defaultChecked /><label>Sale</label></div>
                     <div><input id='sale' name='sale' type='radio' value={false} onChange={handleChange}/><label>Buy</label></div>
                 </div>
-            </div>
-
             <div>
-                <label htmlFor='tags'>Tags</label><br />
+                <label htmlFor='tags'>Tags</label>
+                <SelectTag handleChange={handleChange} selected={tags} setTagsForNew={setTags} width={500}/>
             </div>
-            <SelectTag handleChange={handleChange} selected={tags} setTagsForNew={setTags}/>
             <div>
-                <label htmlFor='photo'>Photo</label><br />
+                <label htmlFor='photo'>Photo</label>
                 <input ref={fileRef} type='file' className='ad-photo' name='photo' id='photo' accept='image/*' onChange={handleChange} />
             </div>
+        </div>
             <button type='submit' className='buttonAdd' disabled={!(formValues.name !== '' && formValues.price !== '' && formValues.tags.length > 0)} >Publish</button>
         
         </form>
         {error ? <div style={{color: 'white', backgroundColor:'red', padding: 10, borderRadius: '15px', width:'33vw', textAlign:'center', marginTop: 100, marginLeft: 'auto', marginRight: 'auto'}}>Error: {error.message}</div> : ''}
-    </div>
+    </div></div>
     
 }
 export default NewAdvertPage

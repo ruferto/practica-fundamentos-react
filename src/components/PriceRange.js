@@ -4,7 +4,7 @@ import Slider from 'rc-slider';
 const { createSliderWithTooltip } = Slider;
 const Range = createSliderWithTooltip(Slider.Range);
 
-const wrapperStyle = { width: 600, margin: 10 };
+const wrapperStyle = { width: '38vw', margin: 10 };
 
 const PriceRange = ({initialRange, onChange}) => {
 
@@ -26,7 +26,7 @@ const PriceRange = ({initialRange, onChange}) => {
 
   return <div>
     <div style={wrapperStyle}>
-      <p style={{color: 'gray', textAlign:'center', paddingBottom:10}}>Between <span style={{color:'#109c8a',fontSize:18}}>{valuesState[0]} €</span> and <span style={{color:'#109c8a',fontSize:18}}>{valuesState[1]} €</span></p>
+      
       <Range 
         style={{paddingBottom:30}}
         step={10} 
@@ -50,6 +50,7 @@ const PriceRange = ({initialRange, onChange}) => {
         onChange={changeRange} 
         allowCross={false}
         />
+        <p style={{color: 'gray', textAlign:'center', paddingBottom:10}}>Between <span style={{color:'#109c8a',fontSize:18}}>{valuesState[0]} €</span> and <span style={{color:'#109c8a',fontSize:18}}>{valuesState[1]} €</span></p>
     </div>
   </div>
 };

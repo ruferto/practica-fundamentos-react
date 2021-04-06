@@ -242,7 +242,6 @@ select{
 button{
     font-size: .9rem;
     border-radius: 15px;
-    /* border-style: none; */
     padding-left: .8rem;
     padding-right: .8rem;
 }
@@ -372,3 +371,24 @@ input[type='email'],
       text-align: left; */
       
   }
+
+  /* New advert page */
+
+  .new-ad-wrapper{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-self: center;
+      width: 500px;
+  }
+
+  .ad-name-input,
+  .ad-price-input{
+      width: 100%;
+      font-size: 1.5rem;
+  }
+
+  /* query form */
+  /* .name-form-q{
+      width:'500px';
+  } */

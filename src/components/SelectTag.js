@@ -26,7 +26,7 @@ const SelectTag = ({ handleChange, selected, setTagsForNew}) => {
     const customStyles = {
         control: (provided, state) => ({
           ...provided,
-          width: '400px'
+          width: '39vw'
         })
     }
     return (
