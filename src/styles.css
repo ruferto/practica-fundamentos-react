@@ -108,19 +108,19 @@ input[type=number] {
   
 .ad-container{
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction:column;
+    /* align-items: center; */
     cursor: pointer;
     /* justify-content: center; */
-    text-align: center;
+    /* text-align: center; */
     background-color: white;
     border-radius: 10px;
     margin-bottom: 2rem;
-    margin-left: .5rem;
-    margin-right: .5rem;
+    /* margin-left: .5rem; */
+    /* margin-right: .5rem; */
     padding: 1rem;
-    width: 200px;
-    height: 200px;
+    width: 350px;
+    /* height: 100px; */
 }
   
 .ad-container:hover{
@@ -134,17 +134,19 @@ input[type=number] {
 }
 
 .ad-name{
-    font-size: 1.3rem;
-    /* text-align: center; */
-    height: 3.5rem;
+    font-family: SanchezFont;
+    font-size: 1.7rem;
+    text-align: left;
+    /* height: 3.5rem; */
+    width:100%;
 }
   
 .price{
     font-size: 1.7rem;
     text-align: right;
     width:100%;
-    padding-right: 20px;
-    margin-bottom: 10px;
+    /* padding-right: 20px;
+    margin-bottom: 10px; */
 }
   
 .tags{

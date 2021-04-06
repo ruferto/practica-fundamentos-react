@@ -86,7 +86,7 @@ const NewAd = () => {
 
             <div>
                 <label htmlFor='name' ><br />Name</label><br />
-                <input ref={inputRef} type='text' name='name' className='ad-name' id='name' placeholder='Article' onChange={handleChange}/>
+                <input ref={inputRef} type='text' name='name' className='ad-name-input' id='name' placeholder='Article' onChange={handleChange}/>
             </div>
             <div>
                 <label htmlFor='precio'>Price</label><br />

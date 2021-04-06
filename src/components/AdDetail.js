@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 import {Redirect} from 'react-router-dom';
 import ConfirmationPanel from './ConfirmationPanel';
 import NotFoundPage from './NotFoundPage';
+import Tags from './Tags';
 
 const AdDetail = ({adId}) => {
     const [ad, setAd] = React.useState();
@@ -83,6 +84,7 @@ const AdDetail = ({adId}) => {
                             <span style={{fontSize:50}}><b>{ad.name}</b></span></div>
                 
                             <div>Price: <span style={{fontSize:45}}>{ad.price}€</span></div>
+                            <div style={{fontSize:20, padding:20}}>Tags: <Tags tagsArray={ad.tags} /></div>
                         </div>
                         <div style={{width:'50vw'}}>
                             <img style={{borderRadius:'25px', maxHeight:'60vh'}} src={ad.photo ? `${process.env.REACT_APP_API_BASE_URL}${ad.photo}` : '../../images/back.png'} alt={ad.name} />
