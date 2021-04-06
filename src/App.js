@@ -1,8 +1,8 @@
 import React from 'react';
-import AdsList from './components/AdsList';
+import AdvertsPage from './components/AdvertsPage';
 import TitleApp from './components/TitleApp';
-import AdDetail from './components/AdDetail';
-import NewAd from './components/NewAd';
+import AdvertPage from './components/AdvertPage';
+import NewAdvertPage from './components/NewAdvertPage';
 import LoginPage from './components/LoginPage';
 import { AuthContextProvider } from './components/auth/context';
 import { Redirect, Route, Switch } from 'react-router-dom';
@@ -66,9 +66,9 @@ function App({ isInitiallyLogged }) {
           <Route exact path='/'>
             <Redirect to='/adverts' />
           </Route>
-          <PrivateRoute exact path='/adverts' render= {() => (isLogged ? <div><AdsList queries={queries} setQueries={setQueries} /></div> : <Redirect to='/login' />)} />
-          <PrivateRoute path='/advert/new' render={ () => <><NewAd /></> } />
-          <PrivateRoute path='/advert/:id' render={({match}) => <div><AdDetail adId={match} /></div>  } />
+          <PrivateRoute exact path='/adverts' render= {() => (isLogged ? <div><AdvertsPage queries={queries} setQueries={setQueries} /></div> : <Redirect to='/login' />)} />
+          <PrivateRoute path='/advert/new' render={ () => <><NewAdvertPage /></> } />
+          <PrivateRoute path='/advert/:id' render={({match}) => <div><AdvertPage adId={match} /></div>  } />
           <Route exact path='/login' render={ () => !isLogged ? <><LoginPage /></> : <Redirect to='/' />}/>
           <Route path='/404'>
             <NotFoundPage />

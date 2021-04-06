@@ -1,11 +1,11 @@
 import React from 'react';
-import { AuthContextConsumer } from '../components/auth/context';
+import { AuthContextConsumer } from './auth/context';
 import QueryForm from './QueryForm';
 import Advert from './Advert';
 import { getLatestAdverts } from '../api/adverts';
 import storage from '../utils/storage';
 
-const AdsList = ({ queries, setQueries, me }) => {
+const AdvertsPage = ({ queries, setQueries, me }) => {
 
   const handleChange = (event) => { 
 
@@ -101,7 +101,7 @@ const AdsList = ({ queries, setQueries, me }) => {
       <AuthContextConsumer>
         {value => {
           return (
-            <AdsList
+            <AdvertsPage
               me={value.profile ? value.profile.username : null}
               {...props}
             />

@@ -3,7 +3,7 @@ import { Redirect } from 'react-router';
 import SelectTag from './SelectTag';
 import { saveAd } from '../api/adverts'
 
-const NewAd = () => {
+const NewAdvertPage = () => {
 
     React.useEffect(() => {
         
@@ -112,4 +112,4 @@ const NewAd = () => {
     </div>
     
 }
-export default NewAd
+export default NewAdvertPage

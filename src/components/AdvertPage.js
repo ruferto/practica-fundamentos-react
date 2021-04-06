@@ -6,7 +6,7 @@ import ConfirmationPanel from './ConfirmationPanel';
 import NotFoundPage from './NotFoundPage';
 import Tags from './Tags';
 
-const AdDetail = ({adId}) => {
+const AdvertPage = ({adId}) => {
     const [ad, setAd] = React.useState();
     const [deletedAd, setDeletedAd] = React.useState(null);
     const [tryToDelete, setTryToDelete] = React.useState(false);
@@ -93,4 +93,4 @@ const AdDetail = ({adId}) => {
             </div>
 }
 
-export default AdDetail;
+export default AdvertPage;
