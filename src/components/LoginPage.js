@@ -10,10 +10,14 @@ const Login = (authValue) => {
         password: '',
         validEmail: false,
         validPassword: false,
-        wantsToBeRemembered: false
+        wantsToBeRemembered: true
     });
     const {email, password, validEmail} = credentials;
     const [error, setError] = React.useState(null); 
+    const inputRef = React.useRef(null);
+    React.useEffect(() => {
+      inputRef.current.focus();
+    }, []);
 
     const handleChange = (event) => {
         
@@ -58,11 +62,11 @@ const Login = (authValue) => {
     return <div className='login-container'>
 
     <form className='form-login' onSubmit={handleSubmit}>
-        <input className='form-login-email' name='email' id='email' placeholder='email' onChange={handleChange} disabled={isLoading} />
+        <input ref={inputRef} className='form-login-email' name='email' id='email' placeholder='email' onChange={handleChange} disabled={isLoading} />
         <input className='form-login-password' name='password' id='password' type='password' placeholder='Contraseña' onChange={handleChange} disabled={isLoading} />
         <button className='login-button' disabled={isLoading || !email || !password || !validEmail} >Login</button>
         <div style={{display: 'flex', flexDirection: 'row-reverse'}}>
-            <input type='checkbox' id='wantsToBeRemembered' name='wantsToBeRemembered' defaultChecked={credentials.wantsToBeRemembered} onClick={handleChange} disabled={isLoading}/>&nbsp;
+            <input type='checkbox' id='wantsToBeRemembered' name='wantsToBeRemembered' checked={credentials.wantsToBeRemembered} onClick={handleChange} disabled={isLoading}/>&nbsp;
             <label style={{fontSize: 12}} htmlFor='wantsToBeRemembered' >Remember me</label>
         </div>
     </form>

@@ -26,7 +26,7 @@ const PriceRange = ({initialRange, onChange}) => {
 
   return <div>
     <div style={wrapperStyle}>
-      <p style={{color: 'gray', textAlign:'center', paddingBottom:10}}>Between <span style={{color:'black',fontSize:18}}>{valuesState[0]} €</span> and <span style={{color:'black',fontSize:18}}>{valuesState[1]} €</span></p>
+      <p style={{color: 'gray', textAlign:'center', paddingBottom:10}}>Between <span style={{color:'#109c8a',fontSize:18}}>{valuesState[0]} €</span> and <span style={{color:'#109c8a',fontSize:18}}>{valuesState[1]} €</span></p>
       <Range 
         style={{paddingBottom:30}}
         step={10} 

@@ -6,9 +6,10 @@ import { saveAd } from '../api/adverts'
 const NewAd = () => {
 
     React.useEffect(() => {
-        return () => {
-            stopLoading();
-        }
+        
+        stopLoading();
+        inputRef.current.focus();
+
     }, []);
 
     const [formValues, setFormValues] = React.useState({
@@ -22,6 +23,8 @@ const NewAd = () => {
     const [tags, setTags] = React.useState([]);
     const [error, setError] = React.useState(null);
     const [isLoading, setIsLoading] = React.useState(false);
+    const inputRef = React.useRef(null);
+
     const stopLoading = () => {
         setIsLoading(false);
     };
@@ -62,6 +65,7 @@ const NewAd = () => {
                 ...oldValue,
                 tags: event.length ? event : ''
                 }
+
                 return newValue;
             });
         }
@@ -78,11 +82,11 @@ const NewAd = () => {
     
     return <div className='new-ad-container'>
         
-        <form className='form-add' method='POST' onSubmit={handleSubmit}>
+        <form className='form-add' method='POST' onSubmit={handleSubmit} noValidate >
 
             <div>
                 <label htmlFor='name' ><br />Name</label><br />
-                <input type='text' name='name' className='ad-name' id='name' placeholder='Article' onChange={handleChange}/>
+                <input ref={inputRef} type='text' name='name' className='ad-name' id='name' placeholder='Article' onChange={handleChange}/>
             </div>
             <div>
                 <label htmlFor='precio'>Price</label><br />
@@ -101,7 +105,7 @@ const NewAd = () => {
                 <label htmlFor='photo'>Photo</label><br />
                 <input ref={fileRef} type='file' className='ad-photo' name='photo' id='photo' accept='image/*' onChange={handleChange} />
             </div>
-            <button type='submit' className='buttonAdd' >Publish</button>
+            <button type='submit' className='buttonAdd' disabled={!(formValues.name !== '' && formValues.price !== '' && formValues.tags.length > 0)} >Publish</button>
         
         </form>
         {error ? <div style={{color: 'white', backgroundColor:'red', padding: 10, borderRadius: '15px', width:'33vw', textAlign:'center', marginTop: 100, marginLeft: 'auto', marginRight: 'auto'}}>Error: {error.message}</div> : ''}

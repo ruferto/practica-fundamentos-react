@@ -177,6 +177,19 @@ input[type=number] {
 .buttonAdd.hidden{
     visibility: hidden;
 }
+
+.buttonAdd:disabled{
+    background-color: rgb(230, 227, 227);
+    color: white;
+    border-color: white;
+    cursor: not-allowed;
+}
+.buttonAdd:disabled:hover{
+    background-color: rgb(230, 227, 227);
+    color: white;
+    border-color: white;
+    cursor: not-allowed;
+}
   
 .buttonAdd:hover, button:hover{
     
