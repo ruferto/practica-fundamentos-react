@@ -10,6 +10,7 @@ const QueryForm = ( {queries, handleChange, handleReset} ) => {
 
   return <>
     <form className='search-form' onSubmit={handleSubmit}>
+      <div className='form-wrapper'>
       <img src='../../images/lupa-icon.png' width='15px' alt='none'/>
       <label >Name: </label>
       <input type='text' action='' id='nombre' name='nombre' value={queries.nombre} onChange={handleChange}/>
@@ -20,6 +21,7 @@ const QueryForm = ( {queries, handleChange, handleReset} ) => {
       </select>
       Tags: <SelectTag id='tags' name='tags' handleChange={handleChange} selected={queries.tags}/>
       <PriceRange initialRange={queries.precio} value={queries.precio} onChange={handleChange} />
+      </div>
   </form>
   <button onClick={handleReset}>Clean<br />filters</button>
   </>;

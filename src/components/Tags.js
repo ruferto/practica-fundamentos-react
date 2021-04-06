@@ -5,7 +5,7 @@ const Tags = ( {tagsArray} ) => {
         tags += (i === tagsArray.length-1) ? `${tagsArray[i]}` : `${tagsArray[i]}, `;
     }
     
-    return <div>{tags}</div>
+    return <>{tags}</>
 }
 
 export default Tags;
