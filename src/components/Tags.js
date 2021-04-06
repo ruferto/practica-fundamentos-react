@@ -1,11 +1,15 @@
 
-const Tags = ({tagsArray} ) => {
-    const tagsElements = tagsArray.map(tag => {
-        const tagName = `${tag}, `;
-        return tagName;
-
-    });
-return <div>{tagsElements}</div>
+const Tags = ( {tagsArray} ) => {
+    let tags = '';
+    for(let i=0; i<=tagsArray.length-1; i++){
+        if(i === tagsArray.length-1){
+            tags += `${tagsArray[i]}`;
+        }else{
+            tags += `${tagsArray[i]}, `
+        }
+    }
+    
+    return <div>{tags}</div>
 }
 
 export default Tags;
