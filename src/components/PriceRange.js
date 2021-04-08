@@ -6,7 +6,7 @@ const Range = createSliderWithTooltip(Slider.Range);
 
 const wrapperStyle = { width: '30vw', margin: 10 };
 
-const PriceRange = ({initialRange, onChange}) => {
+const PriceRange = ({initialRange, onChange, maxPrice}) => {
 
   const [valuesState, setValuesState] = React.useState(initialRange);
 
@@ -33,7 +33,7 @@ const PriceRange = ({initialRange, onChange}) => {
         marks={{
             0: {style:{color:'lightgray', width:100}, 
             label: `0`}, 
-            5000: {style:{color:'lightgray', width:100}, 
+            [maxPrice]: {style:{color:'lightgray', width:100}, 
             label: `∞`},
             2500: {style:{color:'lightgray', width:100}, 
             label: `2500`},
@@ -43,14 +43,14 @@ const PriceRange = ({initialRange, onChange}) => {
             label: `4000`}
         }} 
         min={0} 
-        max={5000} 
+        max={maxPrice} 
         value={valuesState}
         defaultValue={initialRange} 
-        tipFormatter={value => { return (value === 5000 ? '∞' : `${value}€`) }}
+        tipFormatter={value => { return (value === maxPrice ? '∞' : `${value}€`) }}
         onChange={changeRange} 
         allowCross={false}
         />
-        <p style={{color: 'gray', textAlign:'center', paddingBottom:10}}>Between <span style={{color:'#109c8a',fontSize:18}}>{valuesState[0]} €</span> and <span style={{color:'#109c8a',fontSize:18}}>{valuesState[1] !== 5000 ? `${valuesState[1]} €` : ' ∞'}</span></p>
+        <p style={{color: 'gray', textAlign:'center', paddingBottom:10}}>Between <span style={{color:'#109c8a',fontSize:18}}>{valuesState[0]} €</span> and <span style={{color:'#109c8a',fontSize:18}}>{valuesState[1] !== maxPrice ? `${valuesState[1]} €` : ' ∞'}</span></p>
     </div>
   </div>
 };

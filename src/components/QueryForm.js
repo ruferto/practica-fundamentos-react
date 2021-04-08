@@ -2,6 +2,8 @@ import React from 'react';
 import SelectTag from './SelectTag';
 import PriceRange from './PriceRange'
 
+const MAX_PRICE = 5000;
+
 const QueryForm = ( {queries, handleChange, handleReset} ) => {
 
   const handleSubmit = (event) => {
@@ -12,7 +14,7 @@ const QueryForm = ( {queries, handleChange, handleReset} ) => {
     <form className='search-form' onSubmit={handleSubmit}>
       <div className='form-wrapper'>
       
-      <div style={{display:'flex', flexDirection:'column'}}><label >Name: </label>
+      <div style={{display:'flex', flexDirection:'column', marginRight:'1rem'}}><label >Name: </label>
       <input className='name-qForm' type='text' action='' id='nombre' name='nombre' value={queries.nombre} onChange={handleChange}/>
       Type: <select id='venta' name='venta' value={queries.venta} onChange={handleChange}>
         <option value=''>All</option>
@@ -21,7 +23,7 @@ const QueryForm = ( {queries, handleChange, handleReset} ) => {
       </select></div>
       
       <div >Tags: <SelectTag id='tags' name='tags' handleChange={handleChange} selected={queries.tags}/>
-      Price: <PriceRange initialRange={queries.precio} value={queries.precio} onChange={handleChange} /></div>
+      Price: <PriceRange initialRange={queries.precio} value={queries.precio} onChange={handleChange} maxPrice={MAX_PRICE}/></div>
       <div ><button onClick={handleReset}>Clean<br />filters</button></div>
       </div>
       
