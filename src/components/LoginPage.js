@@ -1,10 +1,12 @@
 import React from 'react';
 import { login } from '../api/auth';
-import { AuthContextConsumer } from './auth/context'
+import { AuthContextConsumer } from './auth/context';
+import { useHistory, useLocation } from 'react-router';
 
-const Login = (authValue) => {
 
-    const { onLogin, isLoading, handleStartLoading, handleFinishLoading } = authValue;
+const Login = (authValue, ...props) => {
+
+    const { onLogin, isLogged } = authValue;
     const [credentials, setCredentials] = React.useState({
         email: '',
         password: '',
@@ -12,6 +14,31 @@ const Login = (authValue) => {
         validPassword: false,
         wantsToBeRemembered: true
     });
+
+    const [isLoading, setIsLoading] = React.useState(false);
+
+    const history = useHistory();
+    const location = useLocation();
+
+    const handleStartLoading = () => {
+      setIsLoading(true);
+    }
+    const handleFinishLoading = () => {
+      setIsLoading(false);
+    }
+
+    React.useEffect(() => {
+      if (isLogged) {
+        onLogin();
+        const { from } = location.state || { from: { pathname: '/' } };
+        history.replace(from);
+      }
+      return () => {
+        setIsLoading(false);
+      }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isLogged]);
+    
     const {email, password, validEmail} = credentials;
     const [error, setError] = React.useState(null); 
     const inputRef = React.useRef(null);
@@ -49,13 +76,13 @@ const Login = (authValue) => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try{
+          setError(null);
           handleStartLoading();
-            await login(credentials).then(onLogin);
-            handleFinishLoading();
+          await login(credentials).then(onLogin);
         }catch(error){
-            console.log(error);
-            setError(error);
-            handleFinishLoading();
+          console.log(error);
+          setError(error);
+          handleFinishLoading();
         }
     }
 
@@ -66,7 +93,7 @@ const Login = (authValue) => {
         <input className='form-login-password' name='password' id='password' type='password' placeholder='Contraseña' onChange={handleChange} disabled={isLoading} />
         <button className='login-button' disabled={isLoading || !email || !password || !validEmail} >Login</button>
         <div style={{display: 'flex', flexDirection: 'row-reverse'}}>
-            <input type='checkbox' id='wantsToBeRemembered' name='wantsToBeRemembered' checked={credentials.wantsToBeRemembered} onClick={handleChange} disabled={isLoading}/>&nbsp;
+            <input type='checkbox' id='wantsToBeRemembered' name='wantsToBeRemembered' checked={credentials.wantsToBeRemembered} onChange={handleChange} disabled={isLoading}/>&nbsp;
             <label style={{fontSize: 12}} htmlFor='wantsToBeRemembered' >Remember me</label>
         </div>
     </form>
@@ -83,9 +110,6 @@ const ConnectedLogin = props => {
             <Login
               isLogged={value.isLogged}
               onLogin={value.onLogin}
-              isLoading={value.isLoading}
-              handleStartLoading={value.handleStartLoading}
-              handleFinishLoading={value.handleFinishLoading}
               {...props}
             />
           );

@@ -21,10 +21,8 @@ function App({ isInitiallyLogged }) {
     setProfile(null);
   }
 
-  const [isLoading, setIsLoading] = React.useState(false);
   const [profile, setProfile] = React.useState(null);
-  const handleStartLoading = () => setIsLoading(true);
-  const handleFinishLoading = () => setIsLoading(false);
+  
 
   React.useEffect(() => {
     if(isLogged){
@@ -40,10 +38,6 @@ function App({ isInitiallyLogged }) {
     isLogged,
     onLogout: handleLogout,
     onLogin: handleLogin,
-    isLoading,
-    setIsLoading,
-    handleStartLoading,
-    handleFinishLoading,
     profile,
     handleProfile: setProfile
   };
@@ -57,10 +51,10 @@ function App({ isInitiallyLogged }) {
           <Route exact path='/'>
             <Redirect to='/adverts' />
           </Route>
-          <PrivateRoute exact path='/adverts' render= {() => (isLogged ? <div><AdvertsPage me={profile ? profile.username : null}/></div> : <Redirect to='/login' />)} />
+          <PrivateRoute exact path='/adverts' render= {() => ( <div><AdvertsPage me={profile ? profile.username : null}/></div> )} />
           <PrivateRoute path='/advert/new' render={ () => <><NewAdvertPage /></> } />
           <PrivateRoute path='/advert/:id' render={({match}) => <div><AdvertPage adId={match} /></div>  } />
-          <Route exact path='/login' render={ () => !isLogged ? <><LoginPage /></> : <Redirect to='/' />}/>
+          <Route exact path='/login' render={ LoginPage }/>
           <Route path='/404'>
             <NotFoundPage />
           </Route>
