@@ -80,7 +80,7 @@ const AdvertsPage = ({ me }) => {
   
   const filtered = ads.filter( ad => 
     ad.price >= queries.precio[0] &&
-    ad.price <= queries.precio[1] &&
+    (ad.price <= queries.precio[1] || (queries.precio[1]===5000 && ad.price>5000)) &&
     ad.name.toLowerCase().includes(queries.nombre.toLowerCase()) &&
     ((ad.sale.toString() === queries.venta ) || (queries.venta === '') ) &&
     ad.tags.filter(tag => queries.tags.includes(tag)).length === queries.tags.length

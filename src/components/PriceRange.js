@@ -34,7 +34,7 @@ const PriceRange = ({initialRange, onChange}) => {
             0: {style:{color:'lightgray', width:100}, 
             label: `0`}, 
             5000: {style:{color:'lightgray', width:100}, 
-            label: `5000`},
+            label: `∞`},
             2500: {style:{color:'lightgray', width:100}, 
             label: `2500`},
             1000: {style:{color:'lightgray', width:100}, 
@@ -46,11 +46,11 @@ const PriceRange = ({initialRange, onChange}) => {
         max={5000} 
         value={valuesState}
         defaultValue={initialRange} 
-        tipFormatter={value => `${value}€`} 
+        tipFormatter={value => { return (value === 5000 ? '∞' : `${value}€`) }}
         onChange={changeRange} 
         allowCross={false}
         />
-        <p style={{color: 'gray', textAlign:'center', paddingBottom:10}}>Between <span style={{color:'#109c8a',fontSize:18}}>{valuesState[0]} €</span> and <span style={{color:'#109c8a',fontSize:18}}>{valuesState[1]} €</span></p>
+        <p style={{color: 'gray', textAlign:'center', paddingBottom:10}}>Between <span style={{color:'#109c8a',fontSize:18}}>{valuesState[0]} €</span> and <span style={{color:'#109c8a',fontSize:18}}>{valuesState[1] !== 5000 ? `${valuesState[1]} €` : ' ∞'}</span></p>
     </div>
   </div>
 };
