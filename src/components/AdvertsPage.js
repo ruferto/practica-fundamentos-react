@@ -1,11 +1,21 @@
 import React from 'react';
-import { AuthContextConsumer } from './auth/context';
 import QueryForm from './QueryForm';
 import Advert from './Advert';
 import { getLatestAdverts } from '../api/adverts';
 import storage from '../utils/storage';
 
-const AdvertsPage = ({ queries, setQueries, me }) => {
+const AdvertsPage = ({ me }) => {
+
+  const cleanFilters = {
+    id:'',
+    nombre:'',
+    precio:[0,5000],
+    venta:'',
+    tags:''
+  };
+  const [queries, setQueries] = React.useState(
+     me ? JSON.parse(storage.get(me)) || cleanFilters :
+      cleanFilters);
 
   const handleChange = (event) => { 
 
@@ -96,19 +106,6 @@ const AdvertsPage = ({ queries, setQueries, me }) => {
       </>;
   }
 
-  const ConnectedAdsList = props => {
-    return (
-      <AuthContextConsumer>
-        {value => {
-          return (
-            <AdvertsPage
-              me={value.profile ? value.profile.username : null}
-              {...props}
-            />
-          );
-        }}
-      </AuthContextConsumer>
-    );
-  };
   
-  export default ConnectedAdsList;
+  
+  export default AdvertsPage;

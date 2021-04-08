@@ -41,7 +41,6 @@ const ConnectedTitle = props => {
           <TitleApp
             isLogged={value.isLogged}
             onLogout={value.onLogout}
-            me={ value.profile ? value.profile.username: null}
             {...props}
           />
         );

@@ -8,7 +8,6 @@ import { AuthContextProvider } from './components/auth/context';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import PrivateRoute from './components/PrivateRoute';
 import { aboutMe } from './api/auth';
-import storage from './utils/storage'; 
 import NotFoundPage from './components/NotFoundPage';
 
 function App({ isInitiallyLogged }) {
@@ -17,7 +16,10 @@ function App({ isInitiallyLogged }) {
     setIsLogged(true);
   };
 
-  const handleLogout = () => setIsLogged(false);
+  const handleLogout = () => {
+    setIsLogged(false);
+    setProfile(null);
+  }
 
   const [isLoading, setIsLoading] = React.useState(false);
   const [profile, setProfile] = React.useState(null);
@@ -46,27 +48,16 @@ function App({ isInitiallyLogged }) {
     handleProfile: setProfile
   };
 
-  const cleanFilters = {
-    id:'',
-    nombre:'',
-    precio:[0,5000],
-    venta:'',
-    tags:''
-  };
-  const [queries, setQueries] = React.useState(
-     profile ? JSON.parse(storage.get(profile.username)) || cleanFilters :
-      cleanFilters);
-
   return (
     <div className='App'>
       
       <AuthContextProvider value={authValue} >
-      <TitleApp />
+      <TitleApp me={profile ? profile.username : null} />
         <Switch>
           <Route exact path='/'>
             <Redirect to='/adverts' />
           </Route>
-          <PrivateRoute exact path='/adverts' render= {() => (isLogged ? <div><AdvertsPage queries={queries} setQueries={setQueries} /></div> : <Redirect to='/login' />)} />
+          <PrivateRoute exact path='/adverts' render= {() => (isLogged ? <div><AdvertsPage me={profile ? profile.username : null}/></div> : <Redirect to='/login' />)} />
           <PrivateRoute path='/advert/new' render={ () => <><NewAdvertPage /></> } />
           <PrivateRoute path='/advert/:id' render={({match}) => <div><AdvertPage adId={match} /></div>  } />
           <Route exact path='/login' render={ () => !isLogged ? <><LoginPage /></> : <Redirect to='/' />}/>
