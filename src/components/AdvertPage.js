@@ -86,7 +86,9 @@ const AdvertPage = ({adId}) => {
                             </div>
                             <span style={{fontSize:50}}><b>{ad.name}</b></span></div>
                 
-                            <div>Price: <span style={{fontSize:45}}>{ad.price}€</span></div>
+                            <div>Price: <span style={{fontSize:45}}>{ ad.price % 1 !== 0 ? 
+              Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(ad.price) : 
+              Intl.NumberFormat('de-DE').format(ad.price)+' €' }</span></div>
                             <div style={{fontSize:20, padding:20}}>Tags: <Tags tagsArray={ad.tags} /></div>
                         </div>
                         <div style={{width:'50vw'}}>
