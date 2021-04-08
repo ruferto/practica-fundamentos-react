@@ -3,6 +3,8 @@ import QueryForm from './QueryForm';
 import Advert from './Advert';
 import { getLatestAdverts } from '../api/adverts';
 import storage from '../utils/storage';
+import Loading from './Loading';
+
 
 const AdvertsPage = ({ me }) => {
 
@@ -93,7 +95,7 @@ const AdvertsPage = ({ me }) => {
     if(error)
       return <div style={{color: 'white', backgroundColor:'red', padding: 10, borderRadius: '15px', width:'33vw', textAlign:'center', marginTop: 100, marginLeft: 'auto', marginRight: 'auto'}}>Error: {error.message}</div>
     if(isLoading)
-      return <div className='lds-roller'><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>;
+      return <Loading isLoading={true} />
     if(ads.length === 0)
       return <div style={{fontSize: 20, paddingTop:40, textAlign:'center'}}>There are no adverts yet<br /><br /><a href='/advert/new'><button>Be the first creating one</button></a></div>
     return <>

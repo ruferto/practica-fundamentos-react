@@ -2,6 +2,7 @@ import React from 'react';
 import { login } from '../api/auth';
 import { AuthContextConsumer } from './auth/context';
 import { useHistory, useLocation } from 'react-router';
+import Loading from './Loading';
 
 
 const Login = (authValue, ...props) => {
@@ -101,7 +102,7 @@ const Login = (authValue, ...props) => {
             <label style={{fontSize: 12}} htmlFor='wantsToBeRemembered' >Remember me</label>
         </div>
     </form>
-    {isLoading ? <div className='lds-roller'><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div> : ''}
+    <Loading isLoading={isLoading} />
     {error ? <div onClick={resetError} style={{color: 'white', backgroundColor:'red', marginTop:30, padding: 10, borderRadius: '15px'}}>Error: {error.status === 401 ? 'Wrong username or password' : error.message}</div> : ''}
 </div>
 

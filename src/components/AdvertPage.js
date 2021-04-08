@@ -5,6 +5,8 @@ import {Redirect} from 'react-router-dom';
 import ConfirmationPanel from './ConfirmationPanel';
 import NotFoundPage from './NotFoundPage';
 import Tags from './Tags';
+import Loading from './Loading';
+
 
 const AdvertPage = ({adId}) => {
     const [ad, setAd] = React.useState();
@@ -58,7 +60,8 @@ const AdvertPage = ({adId}) => {
     if(deletedAd){
         return <Redirect to="/" />
     }
-    if(isLoading) return <div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+    if(isLoading)
+        return <Loading isLoading={true} />
 
     if(error && error.status === 404) return <NotFoundPage />
 

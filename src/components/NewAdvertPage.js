@@ -1,7 +1,8 @@
 import React from 'react';
 import { Redirect } from 'react-router';
 import SelectTag from './SelectTag';
-import { saveAd } from '../api/adverts'
+import { saveAd } from '../api/adverts';
+import Loading from './Loading';
 
 const NewAdvertPage = () => {
 
@@ -78,7 +79,7 @@ const NewAdvertPage = () => {
     }
 
     if(isLoading)
-        return <div className='lds-roller'><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+        return <Loading isLoading={true} />
     
     return <div style={{display: 'flex', justifyContent:'center'}}> <div className='new-ad-container'>
         

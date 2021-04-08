@@ -1,12 +1,11 @@
 import React from 'react'
 
-const Loading = (isLoading) => {
+const Loading = ({isLoading}) => {
 
     return (
         isLoading ?
-        'cacafu':
-        'caca'
-
+        <div className='lds-roller'><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div> :
+        ''
     )
 }
 
