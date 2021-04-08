@@ -4,7 +4,7 @@ import Slider from 'rc-slider';
 const { createSliderWithTooltip } = Slider;
 const Range = createSliderWithTooltip(Slider.Range);
 
-const wrapperStyle = { width: '38vw', margin: 10 };
+const wrapperStyle = { width: '30vw', margin: 10 };
 
 const PriceRange = ({initialRange, onChange}) => {
 

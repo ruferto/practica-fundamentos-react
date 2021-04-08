@@ -389,6 +389,18 @@ input[type='email'],
   }
 
   /* query form */
-  /* .name-form-q{
-      width:'500px';
-  } */
+
+  .form-wrapper{
+      display:flex;
+      flex-direction: row;
+      padding: 1rem;
+      justify-content: center;
+  }
+  .name-qForm{
+      width: 30vw;
+      font-size: 1rem;
+      padding: 0.5rem;
+  }
+  .search-form{
+      width:100%;
+  }

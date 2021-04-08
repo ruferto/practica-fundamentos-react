@@ -12,19 +12,21 @@ const QueryForm = ( {queries, handleChange, handleReset} ) => {
     <form className='search-form' onSubmit={handleSubmit}>
       <div className='form-wrapper'>
       
-      <label >Name: </label>
-      <input style={{width:'30vw', fontSize:'1.5rem'}} type='text' action='' id='nombre' name='nombre' value={queries.nombre} onChange={handleChange}/>
-      <select id='venta' name='venta' value={queries.venta} onChange={handleChange}>
+      <div style={{display:'flex', flexDirection:'column'}}><label >Name: </label>
+      <input className='name-qForm' type='text' action='' id='nombre' name='nombre' value={queries.nombre} onChange={handleChange}/>
+      Type: <select id='venta' name='venta' value={queries.venta} onChange={handleChange}>
         <option value=''>All</option>
         <option value='true' >Sell</option>
         <option value='false' >Buy</option>
-      </select>
-      <img src='../../images/lupa-icon.png' width='15px' alt='none'/>
-      <div>Tags: <SelectTag id='tags' name='tags' handleChange={handleChange} selected={queries.tags}/></div>
-      <PriceRange initialRange={queries.precio} value={queries.precio} onChange={handleChange} />
+      </select></div>
+      
+      <div >Tags: <SelectTag id='tags' name='tags' handleChange={handleChange} selected={queries.tags}/>
+      Price: <PriceRange initialRange={queries.precio} value={queries.precio} onChange={handleChange} /></div>
+      <div ><button onClick={handleReset}>Clean<br />filters</button></div>
       </div>
+      
   </form>
-  <div><button onClick={handleReset}>Clean<br />filters</button></div>
+  
   </>;
 
 }
