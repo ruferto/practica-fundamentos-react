@@ -22,7 +22,9 @@ const PriceRange = ({initialRange, onChange, maxPrice}) => {
               value: values
           },
       });
-    }
+    };
+
+    const style = {color:'lightgray', width:100}
 
   return <div>
     <div style={wrapperStyle}>
@@ -31,15 +33,15 @@ const PriceRange = ({initialRange, onChange, maxPrice}) => {
         style={{paddingBottom:30}}
         step={10} 
         marks={{
-            0: {style:{color:'lightgray', width:100}, 
+            0: {style:{}, 
             label: `0`}, 
-            [maxPrice]: {style:{color:'lightgray', width:100}, 
+            [maxPrice]: {style:{style}, 
             label: `∞`},
-            2500: {style:{color:'lightgray', width:100}, 
+            2500: {style:{style}, 
             label: `2500`},
-            1000: {style:{color:'lightgray', width:100}, 
+            1000: {style:{style}, 
             label: `1000`},
-            4000: {style:{color:'lightgray', width:100}, 
+            4000: {style:{style}, 
             label: `4000`}
         }} 
         min={0} 

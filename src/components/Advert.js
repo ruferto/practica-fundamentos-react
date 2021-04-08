@@ -6,7 +6,7 @@ const Advert = ( {ad, queries} ) => {
 
   const style = (ad.sale ? 
     {color: 'white', backgroundColor: '#1c8d7e', borderRadius:5, padding:5, height:28} : 
-    {color: 'white', backgroundColor: 'lightblue', borderRadius:5, padding:5, height:28});
+    {backgroundColor: 'lightblue', borderRadius:5, padding:5, height:28});
     return (
       <Link to={{pathname: `/advert/${ad.id}`, queries:{queries}}} >
 

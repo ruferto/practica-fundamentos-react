@@ -31,12 +31,12 @@ a {
     color: inherit;
 }
   
-a:hover{
-    /* color: #30ebeb; */
+.a:hover{
+    color: #30ebeb;
 }
   
-a:visited{
-    /* color: #1c8d7e; */
+.title:visited{
+    color: #1c8d7e;
 }
 .img-ad{
     width:180px;
@@ -138,6 +138,7 @@ input[type=number] {
     font-size: 1.7rem;
     text-align: left;
     /* height: 3.5rem; */
+    margin-bottom: .3rem;
     width:100%;
 }
   
