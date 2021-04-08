@@ -41,6 +41,10 @@ const Login = (authValue, ...props) => {
     
     const {email, password, validEmail} = credentials;
     const [error, setError] = React.useState(null); 
+    const resetError = () => {
+      setError(null);
+    }
+
     const inputRef = React.useRef(null);
     React.useEffect(() => {
       inputRef.current.focus();
@@ -98,7 +102,7 @@ const Login = (authValue, ...props) => {
         </div>
     </form>
     {isLoading ? <div className='lds-roller'><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div> : ''}
-    {error ? <div style={{color: 'white', backgroundColor:'red', marginTop:30, padding: 10, borderRadius: '15px'}}>Error: {error.status === 401 ? 'Wrong username or password' : error.message}</div> : ''}
+    {error ? <div onClick={resetError} style={{color: 'white', backgroundColor:'red', marginTop:30, padding: 10, borderRadius: '15px'}}>Error: {error.status === 401 ? 'Wrong username or password' : error.message}</div> : ''}
 </div>
 
 }
