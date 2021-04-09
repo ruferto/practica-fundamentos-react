@@ -4,6 +4,7 @@ import Advert from './Advert';
 import { getLatestAdverts } from '../api/adverts';
 import storage from '../utils/storage';
 import Loading from './Loading';
+import MessagePage from './MessagePage';
 
 
 const AdvertsPage = ({ me }) => {
@@ -97,13 +98,21 @@ const AdvertsPage = ({ me }) => {
     if(isLoading)
       return <Loading isLoading={true} />
     if(ads.length === 0)
-      return <div style={{fontSize: 20, paddingTop:40, textAlign:'center'}}>There are no adverts yet<br /><br /><a href='/advert/new'><button>Be the first creating one</button></a></div>
+      return <MessagePage
+                message='There are no adverts yet'
+                urlLink='/advert/new'
+                textLink='Be the first creating one'
+            />
     return <>
         {ads.length > 1 ? <QueryForm queries={queries} setQueries={setQueries} handleChange={handleChange} handleReset={handleReset}/> : ''}
         <div className='ads-list'>
           {adsElement.length !==0 ? 
           adsElement : 
-          <div style={{fontSize: 20, paddingTop:40, textAlign:'center'}}>There are no adverts with this filter<br /><br /><a href='/advert/new' style={{color:'green'}}><button>You can create one</button></a></div>}
+          <MessagePage
+            message='There are no adverts with this filter'
+            urlLink='/advert/new'
+            textLink='You can create one' 
+          />}
         </div>
       </>;
   }
