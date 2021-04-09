@@ -51,7 +51,7 @@ function App({ isInitiallyLogged }) {
           <Route exact path='/'>
             <Redirect to='/adverts' />
           </Route>
-          <PrivateRoute exact path='/adverts' render= {() => ( <div><AdvertsPage me={profile ? profile.username : null}/></div> )} />
+          <PrivateRoute exact path='/adverts' render= {() => ( <div><AdvertsPage me={profile ? profile.id : null}/></div> )} />
           <PrivateRoute path='/advert/new' render={ () => <><NewAdvertPage /></> } />
           <PrivateRoute path='/advert/:id' render={({match}) => <div><AdvertPage adId={match} /></div>  } />
           <Route exact path='/login' render={ LoginPage }/>

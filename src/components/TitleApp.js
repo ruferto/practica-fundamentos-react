@@ -6,23 +6,23 @@ import ConfirmationPanel from './ConfirmationPanel';
 
 const TitleApp = ({isLogged, onLogout, me}) => {
 
-  const [tryToLogout , setTryToLogout] = React.useState(false);
+  const [TryingToLogout , setTryingToLogout] = React.useState(false);
 
   const handleLogout = () => {
     logout().then(onLogout);
-    setTryToLogout(false);
+    setTryingToLogout(false);
   }
 
   const preLogout = () => {
-    setTryToLogout(true);
+    setTryingToLogout(true);
   }
 
   const cancelLogout = () => {
-    setTryToLogout(false);
+    setTryingToLogout(false);
   }
 
     return <div className='title-container'>
-    {tryToLogout ? 
+    {TryingToLogout ? 
     <ConfirmationPanel deleteSure={handleLogout} cancelDelete={cancelLogout} message={'Do you really want to leave?'} subtitle={''} /> : ''}
     <h1><div className='title' ><Link to='/' className='title' >NodePop</Link></div></h1>
     <div className='subtitle-container'>
