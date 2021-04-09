@@ -6,6 +6,7 @@ import ConfirmationPanel from './ConfirmationPanel';
 import NotFoundPage from './NotFoundPage';
 import Tags from './Tags';
 import Loading from './Loading';
+import ErrorMessage from './ErrorMessage';
 
 
 const AdvertPage = ({adId}) => {
@@ -66,7 +67,7 @@ const AdvertPage = ({adId}) => {
     if(error && error.status === 404) return <NotFoundPage />
 
     if(error)
-      return <div style={{color: 'white', backgroundColor:'red', padding: 10, borderRadius: '15px', width:'33vw', textAlign:'center', marginTop: 100, marginLeft: 'auto', marginRight: 'auto'}}>Error: {error.message}</div>
+      return <ErrorMessage error={error} resetError={null} />
 
     return <div style={{textAlign:'center'}}>
         

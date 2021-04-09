@@ -3,6 +3,7 @@ import { Redirect } from 'react-router';
 import SelectTag from './SelectTag';
 import { saveAd } from '../api/adverts';
 import Loading from './Loading';
+import ErrorMessage from './ErrorMessage';
 
 const NewAdvertPage = () => {
 
@@ -33,6 +34,10 @@ const NewAdvertPage = () => {
         setIsLoading(true);
     };
 
+    const resetError = () => {
+        setError(null);
+    }
+
     const handleSubmit = async(event) => {
         event.preventDefault();
         try{
@@ -41,6 +46,7 @@ const NewAdvertPage = () => {
         }catch(error){
             setError(error)
             console.log(error);
+            stopLoading();
         }
     }
 
@@ -111,7 +117,7 @@ const NewAdvertPage = () => {
             <button type='submit' className='buttonAdd' disabled={!(formValues.name !== '' && formValues.price !== '' && formValues.tags.length > 0)} >Publish</button>
         
         </form>
-        {error ? <div style={{color: 'white', backgroundColor:'red', padding: 10, borderRadius: '15px', width:'33vw', textAlign:'center', marginTop: 100, marginLeft: 'auto', marginRight: 'auto'}}>Error: {error.message}</div> : ''}
+        {error ? <ErrorMessage error={error} resetError={resetError} /> : ''}
     </div></div>
     
 }

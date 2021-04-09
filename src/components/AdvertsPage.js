@@ -5,6 +5,7 @@ import { getLatestAdverts } from '../api/adverts';
 import storage from '../utils/storage';
 import Loading from './Loading';
 import MessagePage from './MessagePage';
+import ErrorMessage from './ErrorMessage';
 
 
 const AdvertsPage = ({ me }) => {
@@ -94,7 +95,7 @@ const AdvertsPage = ({ me }) => {
   });
 
     if(error)
-      return <div style={{color: 'white', backgroundColor:'red', padding: 10, borderRadius: '15px', width:'33vw', textAlign:'center', marginTop: 100, marginLeft: 'auto', marginRight: 'auto'}}>Error: {error.message}</div>
+      return <ErrorMessage error={error} resetError={null} />
     if(isLoading)
       return <Loading isLoading={true} />
     if(ads.length === 0)
