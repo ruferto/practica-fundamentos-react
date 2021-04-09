@@ -99,7 +99,7 @@ const AdvertsPage = ({ me }) => {
     if(ads.length === 0)
       return <div style={{fontSize: 20, paddingTop:40, textAlign:'center'}}>There are no adverts yet<br /><br /><a href='/advert/new'><button>Be the first creating one</button></a></div>
     return <>
-        <QueryForm queries={queries} setQueries={setQueries} handleChange={handleChange} handleReset={handleReset}/>
+        {ads.length > 1 ? <QueryForm queries={queries} setQueries={setQueries} handleChange={handleChange} handleReset={handleReset}/> : ''}
         <div className='ads-list'>
           {adsElement.length !==0 ? 
           adsElement : 
