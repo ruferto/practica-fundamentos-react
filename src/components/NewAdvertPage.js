@@ -114,7 +114,7 @@ const NewAdvertPage = () => {
                 <label style={{marginRight:20}} htmlFor='photo'>Photo</label><br></br>
                 <input style={{width:500, fontSize:20}} ref={fileRef} type='file' className='ad-photo' name='photo' id='photo' accept='image/*' onChange={handleChange} />
             </div>
-            <button style={{fontSize:25}} type='submit' className='buttonAdd' disabled={!(formValues.name !== '' && formValues.price !== '' && formValues.tags.length > 0)} >Publish</button>
+            <button style={{fontSize:25}} type='submit' className='buttonAdd' disabled={!(formValues.name !== '' && formValues.price > 0  && formValues.tags.length > 0)} >Publish</button>
         </div>
             
         
