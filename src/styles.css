@@ -165,7 +165,7 @@ input[type=number] {
 
 /* Buttons */
 
-.buttonAdd,button{
+.buttonAdd,button,.newAdLink{
     background-color: white;
     border-color: #109c8a;
     border-radius: 20px;
@@ -175,6 +175,18 @@ input[type=number] {
     font-size: 1rem;
     text-decoration: none;
     cursor: pointer;
+}
+
+.newAdLink{
+    padding-left:10px;
+    border-width: 2px;
+}
+
+.activeLink{
+    /* background-color: black; */
+    /* font-size: 1.5rem; */
+    
+    box-shadow: 0px 3px 6px black;
 }
 
 .buttonAdd.hidden{
@@ -194,7 +206,7 @@ input[type=number] {
     cursor: not-allowed;
 }
   
-.buttonAdd:hover, button:hover{
+.buttonAdd:hover, button:hover, .newAdLink:hover{
     
     background-color: #109c8a;
     color: white;
