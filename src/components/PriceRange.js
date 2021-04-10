@@ -37,10 +37,14 @@ const PriceRange = ({initialRange, onChange, maxPrice}) => {
             label: `0`}, 
             [maxPrice]: {style:{style}, 
             label: `∞`},
-            2500: {style:{style}, 
-            label: `2500`},
             1000: {style:{style}, 
             label: `1000`},
+            2000: {style:{style}, 
+            label: `2000`},
+            1000: {style:{style}, 
+            label: `1000`},
+            3000: {style:{style}, 
+            label: `3000`},
             4000: {style:{style}, 
             label: `4000`}
         }} 
