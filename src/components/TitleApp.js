@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { logout } from '../api/auth';
 import { AuthContextConsumer } from './auth/context';
 import ConfirmationPanel from './ConfirmationPanel';
