@@ -2,7 +2,7 @@ import React from 'react';
 import Select from 'react-select';
 import { getTags } from '../api/adverts';
 
-const SelectTag = ({ handleChange, selected, setTagsForNew}) => {
+const SelectTag = ({ handleChange, selected, setTagsForNew, width}) => {
 
     const [tags, setTags] = React.useState([]);
     React.useEffect( ()=> {
@@ -26,7 +26,7 @@ const SelectTag = ({ handleChange, selected, setTagsForNew}) => {
     const customStyles = {
         control: (provided, state) => ({
           ...provided,
-          width: '30vw'
+          width: width || '30vw'
         })
     }
     return (
