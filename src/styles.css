@@ -38,6 +38,10 @@ a {
 .title:visited{
     color: #1c8d7e;
 }
+
+.title:hover{
+    color: #49d1bf;
+}
 .img-ad{
     width:180px;
     height: 180px;
