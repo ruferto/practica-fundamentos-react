@@ -14,9 +14,7 @@ const ErrorMessage = ( {error, resetError} ) => {
                 borderRadius: '15px',
                 textAlign:'center'
             }}>
-            Error: {error.status === 401 ? 
-            'Wrong username or password' : 
-            error.message}
+            Error: {error.message}
         </div>
     )
 }

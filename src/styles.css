@@ -406,8 +406,12 @@ input[type='email'],
       padding:.5rem;
       margin-bottom: 15px;
   }
-
+  
   /* query form */
+
+  select {
+    text-align-last:center; /* Not compatible with Safari */
+  }
 
   .form-wrapper{
       display:flex;
