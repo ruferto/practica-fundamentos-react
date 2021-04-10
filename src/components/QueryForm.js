@@ -16,7 +16,7 @@ const QueryForm = ( {queries, handleChange, handleReset} ) => {
       
       <div style={{display:'flex', flexDirection:'column', marginRight:'1rem'}}><label >Name: </label>
       <input className='name-qForm' type='text' action='' id='nombre' name='nombre' value={queries.nombre} onChange={handleChange}/>
-      Type: <select id='venta' name='venta' value={queries.venta} onChange={handleChange}>
+      Type: <select style={{fontSize:18, padding:5, borderRadius:'5px'}} id='venta' name='venta' value={queries.venta} onChange={handleChange}>
         <option value=''>All</option>
         <option value='true' >Sell</option>
         <option value='false' >Buy</option>
@@ -24,7 +24,7 @@ const QueryForm = ( {queries, handleChange, handleReset} ) => {
       
       <div >Tags: <SelectTag id='tags' name='tags' handleChange={handleChange} selected={queries.tags}/>
       Price: <PriceRange initialRange={queries.precio} value={queries.precio} onChange={handleChange} maxPrice={MAX_PRICE}/></div>
-      <div ><button style={{marginTop:33}} onClick={handleReset}>Clean<br />filters</button></div>
+      <div ><button style={{marginTop:35, marginLeft:10}} onClick={handleReset}>Clean<br />filters</button></div>
       </div>
       
   </form>
