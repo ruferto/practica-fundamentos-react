@@ -2,12 +2,13 @@
 
 App to filter, read and create adverts in order to practice the skills learned in React Fundaments module.
 
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
 ## Backend required
 
-In order to use the app, you must install the backend **nodepop-api** in the same machine. It's availaible [here.](https://github.com/davidjj76/nodepop-api)
-Once installed and running, it will listen in port 3001.
+In order to use the app, you must install the backend **nodepop-api** in the same machine. Once installed and running, it will listen in port 3001. It's availaible [here](https://github.com/davidjj76/nodepop-api).
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
 
 ## Available Scripts
 
