@@ -44,7 +44,7 @@ const AdvertsPage = ({ me }) => {
       const cleanFilter = {
         id:'',
         nombre:'',
-        precio:[0,5000],
+        precio:[0,getMaxPrice()],
         venta:'',
         tags:''
       };
