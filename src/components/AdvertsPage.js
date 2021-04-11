@@ -77,6 +77,20 @@ const AdvertsPage = ({ me }) => {
     return max;
   }
 
+  React.useEffect( () => {
+    const maxi = getMaxPrice();
+    if( maxi > queries.precio[1])
+      setQueries( oldValue => {
+        const newValue =
+      {
+        ...oldValue,
+        precio: [oldValue.precio[0], maxi]
+      }
+      return newValue;
+      })
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ads]);
+
   React.useEffect(() => {
 
     getLatestAdverts().then(setAds).then(stop).catch(anError);
@@ -92,7 +106,7 @@ const AdvertsPage = ({ me }) => {
   
   const filtered = ads.filter( ad => 
     ad.price >= queries.precio[0] &&
-    (ad.price <= queries.precio[1] || (queries.precio[1]===5000 && ad.price>5000)) &&
+    ad.price <= queries.precio[1] &&
     ad.name.toLowerCase().includes(queries.nombre.toLowerCase()) &&
     ((ad.sale.toString() === queries.venta ) || (queries.venta === '') ) &&
     ad.tags.filter(tag => queries.tags.includes(tag)).length === queries.tags.length
