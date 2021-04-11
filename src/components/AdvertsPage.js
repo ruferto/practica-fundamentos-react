@@ -68,7 +68,15 @@ const AdvertsPage = ({ me }) => {
     setIsLoading(false);
   }
   const [error, setError] = React.useState(null);
-  
+
+  const getMaxPrice = () => {
+    const priceList = ads.map( ad => {
+      return ad.price;
+    });
+    const max = Math.max.apply(null, priceList);
+    return max;
+  }
+
   React.useEffect(() => {
 
     getLatestAdverts().then(setAds).then(stop).catch(anError);
@@ -78,7 +86,7 @@ const AdvertsPage = ({ me }) => {
         setQueries(JSON.parse(storage.get(me.toString())));
       }
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    
   }, [me]);
  
   
@@ -105,7 +113,7 @@ const AdvertsPage = ({ me }) => {
                 textLink='Be the first creating one'
             />
     return <>
-        {ads.length > 1 ? <QueryForm queries={queries} setQueries={setQueries} handleChange={handleChange} handleReset={handleReset}/> : ''}
+        {ads.length > 1 ? <QueryForm queries={queries} setQueries={setQueries} handleChange={handleChange} handleReset={handleReset} maxPrice={getMaxPrice()}/> : ''}
         <div className='ads-list'>
           {adsElement.length !==0 ? 
           adsElement : 
