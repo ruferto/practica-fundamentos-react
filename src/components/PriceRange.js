@@ -31,12 +31,12 @@ const PriceRange = ({initialRange, onChange, maxPrice}) => {
       
       <Range 
         style={{paddingBottom:30}}
-        step={10} 
+        step={1} 
         marks={{
             0: {style:{}, 
             label: `0`}, 
             [maxPrice]: {style:{style}, 
-            label: `∞`},
+            label: `${maxPrice}`},
             // 1000: {style:{style}, 
             // label: `1000`},
             [maxPrice/2]: {style:{style}, 
