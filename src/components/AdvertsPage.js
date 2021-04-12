@@ -109,8 +109,11 @@ const AdvertsPage = ({ me }) => {
   );
 
   const adsElement = filtered.map( ad => {
+
     return <Advert ad={ad} queries={queries} setQueries={setQueries} key={ad.id}/>
   });
+
+  const diff = ads.length - adsElement.length;
 
     if(error)
       return <ErrorMessage error={error} resetError={null} />
@@ -124,6 +127,7 @@ const AdvertsPage = ({ me }) => {
             />
     return <>
         {ads.length > 1 ? <QueryForm queries={queries} setQueries={setQueries} handleChange={handleChange} handleReset={handleReset} maxPrice={getMaxPrice}/> : ''}
+        { diff > 0 && adsElement.length !== 0 ? <div style={{textAlign:'center'}}>There's {diff} more advert{ diff>1 ? 's' :''} that not match with current filters</div> : <br />}
         <div className='ads-list'>
           {adsElement.length !==0 ? 
           adsElement : 
