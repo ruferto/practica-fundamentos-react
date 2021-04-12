@@ -12,17 +12,10 @@ const AdvertsPage = ({ me }) => {
 
   const [ads, setAds] = React.useState([]);
 
-  const [maximum, setMaximum] = React.useState(0);
-
-  React.useEffect(() => {
-    setMaximum(getMaxPrice())
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [ads]);
-
   const cleanFilters = {
     id:'',
     nombre:'',
-    precio:[0,maximum],
+    precio:[0,5000],
     venta:'',
     tags:''
   };
@@ -53,7 +46,7 @@ const AdvertsPage = ({ me }) => {
       const cleanFilter = {
         id:'',
         nombre:'',
-        precio:[0,maximum],
+        precio:[0,getMaxPrice()],
         venta:'',
         tags:''
       };
@@ -86,18 +79,13 @@ const AdvertsPage = ({ me }) => {
   }
 
   React.useEffect( () => {
-    const maxi = getMaxPrice();
-    if( maxi > queries.precio[1])
-      setQueries( oldValue => {
-        const newValue =
-      {
-        ...oldValue,
-        precio: [oldValue.precio[0], maxi]
+    if(me && ads.length!==0){
+      if(!storage.get(me.toString()) ){
+        handleReset();
       }
-      return newValue;
-      })
+    }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [ads]);
+  });
 
   React.useEffect(() => {
 
@@ -121,7 +109,7 @@ const AdvertsPage = ({ me }) => {
   );
 
   const adsElement = filtered.map( ad => {
-    return <Advert ad={ad} queries={queries} key={ad.id}/>
+    return <Advert ad={ad} queries={queries} setQueries={setQueries} key={ad.id}/>
   });
 
     if(error)
@@ -135,7 +123,7 @@ const AdvertsPage = ({ me }) => {
                 textLink='Be the first creating one'
             />
     return <>
-        {ads.length > 1 ? <QueryForm queries={queries} setQueries={setQueries} handleChange={handleChange} handleReset={handleReset} maxPrice={maximum}/> : ''}
+        {ads.length > 1 ? <QueryForm queries={queries} setQueries={setQueries} handleChange={handleChange} handleReset={handleReset} maxPrice={getMaxPrice}/> : ''}
         <div className='ads-list'>
           {adsElement.length !==0 ? 
           adsElement : 

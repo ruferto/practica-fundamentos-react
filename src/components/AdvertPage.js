@@ -30,7 +30,7 @@ const AdvertPage = ({adId}) => {
         try{
             const res = await deleteAdvert(adId.params.id);
             setDeletedAd(res);
-            setTryToDelete(false);
+            setTryToDelete(false);      
         }catch(error){
             console.log(error);
             setError(error);

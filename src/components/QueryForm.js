@@ -20,7 +20,7 @@ const QueryForm = ( {queries, handleChange, handleReset, maxPrice} ) => {
       </select></div>
       
       <div >Tags: <SelectTag id='tags' name='tags' handleChange={handleChange} selected={queries.tags}/>
-      Price: <PriceRange initialRange={queries.precio} value={queries.precio} onChange={handleChange} maxPrice={maxPrice}/></div>
+      Price: <PriceRange initialRange={queries.precio} value={queries.precio} onChange={handleChange} maxPricef={maxPrice}/></div>
       <div ><button style={{marginTop:35, marginLeft:10}} onClick={handleReset}>Clean<br />filters</button></div>
       </div>
       
