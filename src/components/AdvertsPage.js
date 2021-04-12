@@ -10,10 +10,19 @@ import ErrorMessage from './ErrorMessage';
 
 const AdvertsPage = ({ me }) => {
 
+  const [ads, setAds] = React.useState([]);
+
+  const [maximum, setMaximum] = React.useState(0);
+
+  React.useEffect(() => {
+    setMaximum(getMaxPrice())
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ads]);
+
   const cleanFilters = {
     id:'',
     nombre:'',
-    precio:[0,5000],
+    precio:[0,maximum],
     venta:'',
     tags:''
   };
@@ -44,7 +53,7 @@ const AdvertsPage = ({ me }) => {
       const cleanFilter = {
         id:'',
         nombre:'',
-        precio:[0,getMaxPrice()],
+        precio:[0,maximum],
         venta:'',
         tags:''
       };
@@ -57,7 +66,6 @@ const AdvertsPage = ({ me }) => {
     storage.set(me, value);
   }
 
-  const [ads, setAds] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
   const stop = () => {
     setIsLoading(false)
@@ -127,7 +135,7 @@ const AdvertsPage = ({ me }) => {
                 textLink='Be the first creating one'
             />
     return <>
-        {ads.length > 1 ? <QueryForm queries={queries} setQueries={setQueries} handleChange={handleChange} handleReset={handleReset} maxPrice={getMaxPrice()}/> : ''}
+        {ads.length > 1 ? <QueryForm queries={queries} setQueries={setQueries} handleChange={handleChange} handleReset={handleReset} maxPrice={maximum}/> : ''}
         <div className='ads-list'>
           {adsElement.length !==0 ? 
           adsElement : 
