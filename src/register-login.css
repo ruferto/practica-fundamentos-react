@@ -1,70 +1,68 @@
 /* Registro/Login */
 
-.login-container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 3rem;
-    
-  /* margin-left: auto;
+.login-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin-top: 3rem;
+
+	/* margin-left: auto;
   margin-right: auto; */
 }
 
-.form-login{
-    border: 3px solid black;
-    border-radius: 25px;
-    border-color: #1c8d7e;
-    background-color: white;
-    padding: 25px 25px 25px 25px;
-    display: flex;
-    flex-direction: column;
-    width:90%;
-    max-width: 400px;
+.form-login {
+	border: 3px solid black;
+	border-radius: 25px;
+	border-color: #1c8d7e;
+	background-color: white;
+	padding: 25px 25px 25px 25px;
+	display: flex;
+	flex-direction: column;
+	width: 90%;
+	max-width: 400px;
 }
 
 input[type='password'],
 input[type='email'],
-.login-button
-{
-    border-radius: 20px;
-  /* width: 100%; */
-  font-size: 1rem;
-  padding: 0.5rem;
-  margin:.7rem;
+.login-button {
+	border-radius: 20px;
+	/* width: 100%; */
+	font-size: 1rem;
+	padding: 0.5rem;
+	margin: 0.7rem;
 }
 
 .login-button {
-    padding: 0.5rem;
-    font-size: 1.1rem;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    min-width: 10rem;
-    color:1c8d7e;
-    border-radius: 20px;
-    border-width: 2px;
-    border-color: 1c8d7e;
-    border-style:solid;
-    background: rgb(38, 192, 172,0.2);
-    cursor: pointer;
-  }
+	padding: 0.5rem;
+	font-size: 1.1rem;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	min-width: 10rem;
+	color: 1c8d7e;
+	border-radius: 20px;
+	border-width: 2px;
+	border-color: 1c8d7e;
+	border-style: solid;
+	background: rgb(38, 192, 172, 0.2);
+	cursor: pointer;
+}
 
-  .login-button:active{
-      transform: scale(.9);
-      transition: .2 ease;
-  }
+.login-button:active {
+	transform: scale(0.9);
+	transition: 0.2 ease;
+}
 
-  .login-button:disabled,
-  .login-button[disabled]{
-    background-color: rgb(230, 227, 227);
-    color: white;
-    border-color: white;
-    cursor: not-allowed;
-  }
+.login-button:disabled,
+.login-button[disabled] {
+	background-color: rgb(230, 227, 227);
+	color: white;
+	border-color: white;
+	cursor: not-allowed;
+}
 
-  .login-link{
-      padding-top: 20px;
-      font-family: Verdana, Geneva, Tahoma, sans-serif;
-      /* width:300px;
+.login-link {
+	padding-top: 20px;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	/* width:300px;
       text-align: left; */
-      
-  }
+}

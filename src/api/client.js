@@ -2,43 +2,44 @@ import axios from 'axios';
 
 const client = axios.create({ baseURL: process.env.REACT_APP_API_BASE_URL });
 
-const setAuthorizationHeader = token => {
-  
-  client.defaults.headers.common['Authorization'] = `Bearer ${token.replace('"','').replace('"','')}`;
+const setAuthorizationHeader = (token) => {
+	client.defaults.headers.common['Authorization'] = `Bearer ${token
+		.replace('"', '')
+		.replace('"', '')}`;
 };
 
 const removeAuthorizationHeader = () => {
-  delete client.defaults.headers.common['Authorization'];
+	delete client.defaults.headers.common['Authorization'];
 };
 
 client.interceptors.response.use(
-  response => response.data,
-  error => {
-    if (!error.response) {
-      return Promise.reject({ message: error.message });
-    }
-    return Promise.reject({
-      message: error.response.statusText,
-      ...error.response,
-      ...error.response.data,
-    });
-  },
-  config => {
-    if (config.data instanceof FormData) {
-      Object.assign(config.headers, config.data.getHeaders());
-    }
-    return config;
-  }
+	(response) => response.data,
+	(error) => {
+		if (!error.response) {
+			return Promise.reject({ message: error.message });
+		}
+		return Promise.reject({
+			message: error.response.statusText,
+			...error.response,
+			...error.response.data,
+		});
+	},
+	(config) => {
+		if (config.data instanceof FormData) {
+			Object.assign(config.headers, config.data.getHeaders());
+		}
+		return config;
+	}
 );
 
 export const configureClient = ({ accessToken }) => {
-  if (accessToken) {
-    setAuthorizationHeader(accessToken);
-  }
+	if (accessToken) {
+		setAuthorizationHeader(accessToken);
+	}
 };
 
 export const resetClient = () => {
-  removeAuthorizationHeader();
+	removeAuthorizationHeader();
 };
 
 export default client;

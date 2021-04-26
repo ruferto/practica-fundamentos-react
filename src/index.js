@@ -15,8 +15,11 @@ const accessToken = storage.get('auth');
 configureClient({ accessToken });
 
 ReactDOM.render(
-    <Router>
-      <App style={styles, sliderStyle, loaderStyle}  isInitiallyLogged={!!accessToken}/>
-    </Router>,
-  document.getElementById('root')
+	<Router>
+		<App
+			style={(styles, sliderStyle, loaderStyle)}
+			isInitiallyLogged={!!accessToken}
+		/>
+	</Router>,
+	document.getElementById('root')
 );
