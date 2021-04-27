@@ -34,7 +34,7 @@ const TitleApp = ({ isLogged, onLogout, me }) => {
 							''
 						)}{' '}
 						
-						<ConfirmButton iconButton={'/images/logout.png'} titleButton={"Logout"} okAction={logout} />
+						<ConfirmButton iconButton={'/images/logout.png'} titleButton={"Logout"} okAction={handleLogout} />
 						<div>
 							<NavLink
 								to='/advert/new'
