@@ -52,7 +52,7 @@ const NewAdvertPage = () => {
 			setFormValues((oldValue) => {
 				const newValue = {
 					...oldValue,
-					photo: fileRef.current.files[0],
+					photo: event.target.files[0],
 				};
 				return newValue;
 			});
@@ -72,8 +72,6 @@ const NewAdvertPage = () => {
 			});
 		}
 	};
-
-	const fileRef = React.useRef(null);
 
 	if (created) {
 		return <Redirect to={`/advert/${created.id}`} />;
@@ -195,7 +193,6 @@ const NewAdvertPage = () => {
 							<br></br>
 							<input
 								style={{ width: 500, fontSize: 20 }}
-								ref={fileRef}
 								type='file'
 								className='ad-photo'
 								name='photo'
