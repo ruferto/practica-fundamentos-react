@@ -2,36 +2,16 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { logout } from '../api/auth';
 import { AuthContextConsumer } from './auth/context';
-import ConfirmationPanel from './ConfirmationPanel';
+import ConfirmButton from './ConfirmButton';
 
 const TitleApp = ({ isLogged, onLogout, me }) => {
-	const [TryingToLogout, setTryingToLogout] = React.useState(false);
 
 	const handleLogout = () => {
 		logout().then(onLogout);
-		setTryingToLogout(false);
-	};
-
-	const preLogout = () => {
-		setTryingToLogout(true);
-	};
-
-	const cancelLogout = () => {
-		setTryingToLogout(false);
 	};
 
 	return (
 		<div className='title-container'>
-			{TryingToLogout ? (
-				<ConfirmationPanel
-					deleteSure={handleLogout}
-					cancelDelete={cancelLogout}
-					message={'Do you really want to leave?'}
-					subtitle={''}
-				/>
-			) : (
-				''
-			)}
 			<h1>
 				<div className='title'>
 					<NavLink
@@ -53,12 +33,8 @@ const TitleApp = ({ isLogged, onLogout, me }) => {
 						) : (
 							''
 						)}{' '}
-						<button
-							style={{ marginBottom: 30, fontSize: 15 }}
-							onClick={preLogout}
-						>
-							<img src='/images/logout.png' width='14' alt='logout' /> Logout
-						</button>
+						
+						<ConfirmButton iconButton={'/images/logout.png'} titleButton={"Logout"} okAction={logout} />
 						<div>
 							<NavLink
 								to='/advert/new'

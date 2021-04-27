@@ -2,7 +2,7 @@ import React from 'react';
 import { deleteAdvert, getAdvertDetail } from '../api/adverts';
 import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
-import ConfirmationPanel from './ConfirmationPanel';
+import ConfirmButton from './ConfirmButton';
 import NotFoundPage from './NotFoundPage';
 import Tags from './Tags';
 import Loading from './Loading';
@@ -11,33 +11,17 @@ import ErrorMessage from './ErrorMessage';
 const AdvertPage = ({ adId }) => {
 	const [ad, setAd] = React.useState();
 	const [deletedAd, setDeletedAd] = React.useState(null);
-	const [tryToDelete, setTryToDelete] = React.useState(false);
 	const [isLoading, setIsLoading] = React.useState(true);
 	const [error, setError] = React.useState(null);
-
-	const handleDelete = async () => {
-		setTryToDelete(true);
-	};
-
-	React.useEffect(() => {
-		return () => {
-			setTryToDelete(false);
-		};
-	}, []);
 
 	const deleteSure = async () => {
 		try {
 			const res = await deleteAdvert(adId.params.id);
 			setDeletedAd(res);
-			setTryToDelete(false);
 		} catch (error) {
 			console.log(error);
 			setError(error);
 		}
-	};
-
-	const cancelDelete = () => {
-		setTryToDelete(false);
 	};
 
 	const stop = () => {
@@ -66,23 +50,13 @@ const AdvertPage = ({ adId }) => {
 
 	return (
 		<div style={{ textAlign: 'center' }}>
-			{tryToDelete ? (
-				<ConfirmationPanel
-					deleteSure={deleteSure}
-					cancelDelete={cancelDelete}
-					message={'Are you sure?'}
-					subtitle={"(This action can't be undone)"}
-				/>
-			) : (
-				''
-			)}
+			
 			<div style={{ paddingTop: 20, paddingBottom: 20 }}>
 				<Link to='/'>
 					<button>Back to list</button>
 				</Link>
-				<button className='delete-button' onClick={handleDelete}>
-					Delete
-				</button>
+				
+				<ConfirmButton className='delete-button' titleButton='Delete' okAction={deleteSure} />
 			</div>
 			<div
 				style={{

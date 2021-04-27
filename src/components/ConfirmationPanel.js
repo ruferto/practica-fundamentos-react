@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ConfirmationPanel = ({ deleteSure, cancelDelete, message, subtitle }) => {
+const ConfirmationPanel = ({ okAction, cancelAction, message, subtitle }) => {
 	return (
 		<div
 			style={{
@@ -30,8 +30,8 @@ const ConfirmationPanel = ({ deleteSure, cancelDelete, message, subtitle }) => {
 					justifyContent: 'space-evenly',
 				}}
 			>
-				<button onClick={cancelDelete}>Cancel</button>
-				<button className='delete-button' onClick={deleteSure}>
+				<button onClick={cancelAction}>Cancel</button>
+				<button className='delete-button-panel' onClick={okAction}>
 					Sure
 				</button>
 			</div>
