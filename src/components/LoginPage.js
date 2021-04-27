@@ -10,8 +10,6 @@ const Login = (authValue, ...props) => {
 	const [credentials, setCredentials] = React.useState({
 		email: '',
 		password: '',
-		validEmail: false,
-		validPassword: false,
 		wantsToBeRemembered: true,
 	});
 
@@ -39,7 +37,7 @@ const Login = (authValue, ...props) => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [isLogged]);
 
-	const { email, password, validEmail } = credentials;
+	const { email, password } = credentials;
 	const [error, setError] = React.useState(null);
 	const resetError = () => {
 		setError(null);
@@ -59,12 +57,6 @@ const Login = (authValue, ...props) => {
 				}));
 				break;
 
-			case 'email':
-				setCredentials((oldValue) => ({
-					...oldValue,
-					validEmail: event.target.value.indexOf('@') !== -1,
-				}));
-			// eslint-disable-next-line no-fallthrough
 			default:
 				setCredentials((oldValue) => ({
 					...oldValue,
@@ -111,7 +103,7 @@ const Login = (authValue, ...props) => {
 				/>
 				<button
 					className='login-button'
-					disabled={isLoading || !email || !password || !validEmail}
+					disabled={isLoading || !email || !password || email.indexOf('@') === -1}
 				>
 					Login
 				</button>
