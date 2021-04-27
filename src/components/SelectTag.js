@@ -23,7 +23,12 @@ const SelectTag = ({ handleChange, selected, setTagsForNew, width }) => {
 		if (handleChange) {
 			const qTags = event.map((tag) => tag.label);
 			if (setTagsForNew) setTagsForNew(qTags);
-			handleChange(qTags);
+			handleChange({
+				target: {
+					name: 'tags',
+					value: qTags,
+				},
+			});
 		}
 	};
 

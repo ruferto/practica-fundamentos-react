@@ -34,7 +34,7 @@ const TitleApp = ({ isLogged, onLogout, me }) => {
 						)}{' '}
 						<ConfirmButton
 							iconButton={'/images/logout.png'}
-							titleButton={'Logout'}
+							titleButton={' Logout'}
 							okAction={handleLogout}
 						/>
 						<div>
