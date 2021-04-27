@@ -72,14 +72,14 @@ const AdvertsPage = ({ me }) => {
 		return max;
 	};
 
-	React.useEffect(() => {
-		if (me && ads.length !== 0) {
-			if (!storage.get(me.toString())) {
-				handleReset();
-			}
-		}
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	});
+	// React.useEffect(() => {
+	// 	if (me && ads.length !== 0) {
+	// 		if (!storage.get(me.toString())) {
+	// 			handleReset();
+	// 		}
+	// 	}
+	// 	// eslint-disable-next-line react-hooks/exhaustive-deps
+	// }, []);
 
 	React.useEffect(() => {
 		getLatestAdverts().then(setAds).then(stop).catch(anError);
