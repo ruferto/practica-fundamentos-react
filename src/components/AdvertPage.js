@@ -50,13 +50,18 @@ const AdvertPage = ({ adId }) => {
 
 	return (
 		<div style={{ textAlign: 'center' }}>
-			
 			<div style={{ paddingTop: 20, paddingBottom: 20 }}>
 				<Link to='/'>
 					<button>Back to list</button>
 				</Link>
-				
-				<ConfirmButton className='delete-button' titleButton='Delete' okAction={deleteSure} />
+
+				<ConfirmButton
+					className="delete-button"
+					titleButton="Delete"
+					okAction={deleteSure}
+					message="Are you sure?"
+					subtitle="(This action can't be undone)"
+				/>
 			</div>
 			<div
 				style={{

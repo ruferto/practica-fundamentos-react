@@ -1,7 +1,7 @@
 import React from 'react';
 import ConfirmationPanel from './ConfirmationPanel.js';
 
-export const ConfirmButton = ({ iconButton, titleButton, okAction }) => {
+export const ConfirmButton = ({ iconButton, titleButton, okAction, message, subtitle }) => {
 	const [isVisible, setIsVisible] = React.useState(false);
 
 	const showConfirmationPanel = () => {
@@ -30,8 +30,8 @@ export const ConfirmButton = ({ iconButton, titleButton, okAction }) => {
 				<ConfirmationPanel
 					okAction={confirms}
 					cancelAction={cancels}
-					message={'Are you sure?'}
-					subtitle={"(This action can't be undone)"}
+					message={message}
+					subtitle={subtitle}
 				/>
 			)}
 		</>

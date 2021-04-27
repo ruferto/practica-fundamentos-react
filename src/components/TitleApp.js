@@ -36,6 +36,8 @@ const TitleApp = ({ isLogged, onLogout, me }) => {
 							iconButton={'/images/logout.png'}
 							titleButton={' Logout'}
 							okAction={handleLogout}
+							message='Sure you wanna leave?'
+							subtitle='We will miss you'
 						/>
 						<div>
 							<NavLink
