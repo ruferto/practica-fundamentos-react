@@ -106,6 +106,7 @@ const NewAdvertPage = () => {
 									ref={inputRef}
 									type='text'
 									name='name'
+									value={formValues.name}
 									className='ad-name-input'
 									id='name'
 									placeholder='Article'
@@ -119,6 +120,7 @@ const NewAdvertPage = () => {
 									step='0.01'
 									min='0'
 									name='price'
+									value={formValues.price}
 									id='price'
 									className='ad-price-input'
 									placeholder='0,00'
@@ -135,7 +137,14 @@ const NewAdvertPage = () => {
 								justifyContent: 'center',
 							}}
 						>
-							<label style={{ fontSize: 14, marginRight: 20 }}>Type</label>
+							<label
+								style={{
+									fontSize: 14,
+									marginRight: 20,
+								}}
+							>
+								Type
+							</label>
 							<div
 								style={{
 									marginRight: 20,
@@ -147,7 +156,7 @@ const NewAdvertPage = () => {
 									id='sale'
 									name='sale'
 									type='radio'
-									value={true}
+									value={formValues.sale}
 									onChange={handleChange}
 									defaultChecked
 								/>
@@ -164,7 +173,7 @@ const NewAdvertPage = () => {
 									id='sale'
 									name='sale'
 									type='radio'
-									value={false}
+									value={!formValues.sale}
 									onChange={handleChange}
 								/>
 								<label> Buy</label>
@@ -187,12 +196,15 @@ const NewAdvertPage = () => {
 								marginLeft: 'auto',
 							}}
 						>
-							<label style={{ marginRight: 20 }} htmlFor='photo'>
+							<label style={{marginRight: 20 }} htmlFor='photo'>
 								Photo
 							</label>
 							<br></br>
 							<input
-								style={{ width: 500, fontSize: 20 }}
+								style={{
+									width: 500,
+									fontSize: 20
+								}}
 								type='file'
 								className='ad-photo'
 								name='photo'
