@@ -5,7 +5,6 @@ import { AuthContextConsumer } from './auth/context';
 import ConfirmButton from './ConfirmButton';
 
 const TitleApp = ({ isLogged, onLogout, me }) => {
-
 	const handleLogout = () => {
 		logout().then(onLogout);
 	};
@@ -33,8 +32,11 @@ const TitleApp = ({ isLogged, onLogout, me }) => {
 						) : (
 							''
 						)}{' '}
-						
-						<ConfirmButton iconButton={'/images/logout.png'} titleButton={"Logout"} okAction={handleLogout} />
+						<ConfirmButton
+							iconButton={'/images/logout.png'}
+							titleButton={'Logout'}
+							okAction={handleLogout}
+						/>
 						<div>
 							<NavLink
 								to='/advert/new'

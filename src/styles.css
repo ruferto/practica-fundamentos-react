@@ -311,7 +311,7 @@ button {
 	background-color: white;
 	border-color: rgb(233, 73, 73, 0.9);
 	margin-left: 3rem;
-	margin-bottom: 2rem;
+	margin-bottom: .8rem;
 }
 
 .delete-button-panel {
