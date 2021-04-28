@@ -17,21 +17,18 @@ const AdvertsPage = ({ me }) => {
 		venta: '',
 		tags: '',
 	};
+
 	const [queries, setQueries] = React.useState(
 		me ? JSON.parse(storage.get(me)) || cleanFilters : cleanFilters
 	);
 
 	const handleChange = (event) => {
 		setQueries((oldValue) => {
-			const newValue = event.target
-				? {
-						...oldValue,
-						[event.target.name]: event.target.value,
-				  }
-				: {
-						...oldValue,
-						tags: event.length ? event : '',
-				  };
+			const newValue = {
+				...oldValue,
+				[event.target.name]: event.target.value,
+			};
+
 			saveQueries(newValue);
 			return newValue;
 		});
@@ -57,11 +54,13 @@ const AdvertsPage = ({ me }) => {
 	const stop = () => {
 		setIsLoading(false);
 	};
+	
 	const anError = (error) => {
 		console.error(error);
 		setError(error);
 		setIsLoading(false);
 	};
+
 	const [error, setError] = React.useState(null);
 
 	const getMaxPrice = () => {
